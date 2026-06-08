@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VNPT Hà Nội Quiz - Luyện thi Online</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>VNPT Hà Nội Quiz</h1>
+    <p>Luyện vòng test online Kỹ sư phần mềm/Kỹ sư CNTT trong 15 ngày</p>
+  </header>
+
+  <main>
+    <section id="home" class="card">
+      <h2>Chọn đề luyện theo ngày</h2>
+      <div id="days" class="grid"></div>
+      <h3>Lịch sử làm bài trên máy này</h3>
+      <div id="history"></div>
+    </section>
+
+    <section id="quiz" class="card hidden">
+      <div class="quiz-head">
+        <div>
+          <h2 id="quizTitle"></h2>
+          <p id="progress"></p>
+        </div>
+        <div id="timer"></div>
+      </div>
+      <div id="questionBox"></div>
+      <div class="actions">
+        <button id="prevBtn">Câu trước</button>
+        <button id="nextBtn">Câu sau</button>
+        <button id="submitBtn">Nộp bài</button>
+      </div>
+    </section>
+
+    <section id="result" class="card hidden">
+      <h2>Kết quả</h2>
+      <div id="score"></div>
+      <div id="review"></div>
+      <button onclick="location.reload()">Quay lại danh sách đề</button>
+    </section>
+  </main>
+
+  <footer>Miễn phí - chạy trực tiếp trên GitHub Pages/Vercel/Netlify</footer>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
