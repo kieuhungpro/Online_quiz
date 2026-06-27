@@ -1,30 +1,24 @@
-# VNPT Hà Nội Quiz
+# VNPT Exam Bank v1
 
-Website tĩnh miễn phí để luyện vòng thi online Kỹ sư phần mềm/Kỹ sư CNTT.
+Bộ luyện thi online vị trí Kỹ sư lập trình Java - VNPT Hà Nội.
 
-## Cách chạy trên máy tính
-Mở file `index.html` bằng Chrome/Edge.
+## Tính năng
+- 500 câu hỏi trắc nghiệm.
+- Random 50 câu / 60 phút.
+- 10 mock test.
+- Chấm điểm tự động.
+- Review đáp án và giải thích.
+- Thống kê điểm theo chủ đề.
+- Lưu lịch sử bằng LocalStorage.
+- Chạy tĩnh trên GitLab Pages/GitHub Pages/Vercel.
 
-## Đưa lên GitHub Pages
-1. Tạo repository mới trên GitHub, ví dụ `vnpt-quiz`.
-2. Upload toàn bộ file trong thư mục này.
-3. Vào Settings → Pages.
-4. Source: Deploy from branch.
-5. Branch: main / root.
-6. Lấy link dạng: `https://<username>.github.io/vnpt-quiz/`
-
-## Đưa lên Vercel
-1. Vào vercel.com.
-2. New Project.
-3. Import repo GitHub.
-4. Deploy.
-
-## Sửa câu hỏi
-Mở file `questions.js`, sửa nội dung trong `window.QUIZ_DAYS`.
-
-Mỗi câu gồm:
-- question: câu hỏi
-- options: 4 đáp án
-- answer: số thứ tự đáp án đúng, bắt đầu từ 0
-- explain: giải thích
-- category: nhóm kiến thức
+## Upload lên GitLab
+```bash
+git init
+git add .
+git commit -m "VNPT Exam Bank v1"
+git branch -M main
+git remote add origin <URL_REPO_GITLAB>
+git push -u origin main
+```
+Sau đó vào GitLab: Deploy > Pages để lấy link.
