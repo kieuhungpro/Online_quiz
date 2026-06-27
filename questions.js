@@ -1,6 +1,6 @@
 const questions = [
   {
-    "Test": 1,
+    "day": 1,
     "title": "SQL cơ bản",
     "duration": 20,
     "questions": [
