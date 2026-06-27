@@ -1,6107 +1,766 @@
+// VNPT Exam Bank - Bộ 01: Java Core + OOP
+// 50 câu - đáp án đã random cân bằng A/B/C/D
+// Thống kê đáp án: A=13, B=12, C=13, D=12
+
 window.QUIZ_DAYS = [
   {
     "day": 1,
-    "title": "SQL cơ bản",
-    "duration": 20,
+    "title": "Bộ 01 - Java Core + OOP",
+    "duration": 60,
     "questions": [
       {
-        "question": "Foreign Key dùng để làm gì?",
+        "id": "JAVA-OOP-001",
+        "category": "Java Core + OOP",
+        "topic": "String",
+        "difficulty": 1,
+        "question": "Trong Java, phát biểu nào đúng về String?",
         "options": [
-          "Mã hóa dữ liệu",
-          "Liên kết dữ liệu giữa bảng",
-          "Xóa dữ liệu",
-          "Tạo giao diện"
-        ],
-        "answer": 1,
-        "explain": "Foreign Key liên kết bảng con với bảng cha.",
-        "category": "SQL"
-      },
-      {
-        "question": "WHERE khác HAVING ở điểm nào?",
-        "options": [
-          "WHERE lọc sau GROUP BY",
-          "HAVING lọc trước GROUP BY",
-          "WHERE lọc trước GROUP BY, HAVING lọc sau GROUP BY",
-          "Không khác nhau"
+          "String chỉ được lưu trong Stack.",
+          "String là mutable object.",
+          "String là immutable object.",
+          "String không override equals()."
         ],
         "answer": 2,
-        "explain": "WHERE lọc dòng trước nhóm, HAVING lọc nhóm.",
-        "category": "SQL"
+        "explain": "String là immutable. Khi thay đổi chuỗi, Java thường tạo object mới hoặc dùng tối ưu String Pool."
       },
       {
-        "question": "INNER JOIN trả về gì?",
+        "id": "JAVA-OOP-002",
+        "category": "Java Core + OOP",
+        "topic": "String",
+        "difficulty": 1,
+        "question": "Kết quả của đoạn code sau là gì?\nString s1 = \"VNPT\";\nString s2 = new String(\"VNPT\");\nSystem.out.println(s1 == s2);",
         "options": [
-          "Toàn bộ bảng trái",
-          "Chỉ bản ghi khớp giữa hai bảng",
-          "Toàn bộ bảng phải",
-          "Tích Descartes"
+          "Runtime Error",
+          "false",
+          "true",
+          "Compile Error"
         ],
         "answer": 1,
-        "explain": "INNER JOIN chỉ lấy bản ghi thỏa điều kiện join.",
-        "category": "SQL"
+        "explain": "`==` so sánh tham chiếu object. s1 ở String Pool, còn s2 là object mới."
       },
       {
-        "question": "LEFT JOIN trả về gì?",
+        "id": "JAVA-OOP-003",
+        "category": "Java Core + OOP",
+        "topic": "String",
+        "difficulty": 1,
+        "question": "Kết quả của đoạn code sau là gì?\nString s1 = \"VNPT\";\nString s2 = new String(\"VNPT\");\nSystem.out.println(s1.equals(s2));",
         "options": [
-          "Toàn bộ bảng trái và phần khớp bảng phải",
-          "Chỉ bản ghi khớp",
-          "Toàn bộ bảng phải",
-          "Không có NULL"
-        ],
-        "answer": 0,
-        "explain": "LEFT JOIN giữ toàn bộ dữ liệu bảng bên trái.",
-        "category": "SQL"
-      },
-      {
-        "question": "Index dùng để làm gì?",
-        "options": [
-          "Tăng tốc truy vấn",
-          "Backup dữ liệu",
-          "Mã hóa dữ liệu",
-          "Xóa bảng"
-        ],
-        "answer": 0,
-        "explain": "Index giúp tăng tốc tìm kiếm nhưng có thể làm chậm ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "ACID gồm gì?",
-        "options": [
-          "Atomicity, Consistency, Isolation, Durability",
-          "Access, Control, Identity, Data",
-          "Audit, Cache, Index, Disk",
-          "Không đáp án nào"
-        ],
-        "answer": 0,
-        "explain": "ACID là 4 tính chất của transaction.",
-        "category": "SQL"
-      },
-      {
-        "question": "GROUP BY dùng để làm gì?",
-        "options": [
-          "Nhóm dữ liệu",
-          "Xóa dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "GROUP BY dùng nhóm dữ liệu theo cột.",
-        "category": "SQL"
-      },
-      {
-        "question": "ORDER BY dùng để làm gì?",
-        "options": [
-          "Lọc dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Nhóm dữ liệu",
-          "Tạo khóa"
+          "Compile Error",
+          "true",
+          "NullPointerException",
+          "false"
         ],
         "answer": 1,
-        "explain": "ORDER BY sắp xếp tăng/giảm.",
-        "category": "SQL"
-      },
-      {
-        "question": "COUNT(*) dùng để làm gì?",
-        "options": [
-          "Đếm dòng",
-          "Tính tổng",
-          "Tính trung bình",
-          "Tìm lớn nhất"
-        ],
-        "answer": 0,
-        "explain": "COUNT(*) đếm số bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Primary Key có đặc điểm nào?",
-        "options": [
-          "Cho phép NULL",
-          "Được trùng lặp",
-          "Không NULL và không trùng",
-          "Không tạo index"
-        ],
-        "answer": 2,
-        "explain": "Primary Key dùng định danh duy nhất bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Foreign Key dùng để làm gì?",
-        "options": [
-          "Mã hóa dữ liệu",
-          "Liên kết dữ liệu giữa bảng",
-          "Xóa dữ liệu",
-          "Tạo giao diện"
-        ],
-        "answer": 1,
-        "explain": "Foreign Key liên kết bảng con với bảng cha.",
-        "category": "SQL"
-      },
-      {
-        "question": "WHERE khác HAVING ở điểm nào?",
-        "options": [
-          "WHERE lọc sau GROUP BY",
-          "HAVING lọc trước GROUP BY",
-          "WHERE lọc trước GROUP BY, HAVING lọc sau GROUP BY",
-          "Không khác nhau"
-        ],
-        "answer": 2,
-        "explain": "WHERE lọc dòng trước nhóm, HAVING lọc nhóm.",
-        "category": "SQL"
-      },
-      {
-        "question": "INNER JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái",
-          "Chỉ bản ghi khớp giữa hai bảng",
-          "Toàn bộ bảng phải",
-          "Tích Descartes"
-        ],
-        "answer": 1,
-        "explain": "INNER JOIN chỉ lấy bản ghi thỏa điều kiện join.",
-        "category": "SQL"
-      },
-      {
-        "question": "LEFT JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái và phần khớp bảng phải",
-          "Chỉ bản ghi khớp",
-          "Toàn bộ bảng phải",
-          "Không có NULL"
-        ],
-        "answer": 0,
-        "explain": "LEFT JOIN giữ toàn bộ dữ liệu bảng bên trái.",
-        "category": "SQL"
-      },
-      {
-        "question": "Index dùng để làm gì?",
-        "options": [
-          "Tăng tốc truy vấn",
-          "Backup dữ liệu",
-          "Mã hóa dữ liệu",
-          "Xóa bảng"
-        ],
-        "answer": 0,
-        "explain": "Index giúp tăng tốc tìm kiếm nhưng có thể làm chậm ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "ACID gồm gì?",
-        "options": [
-          "Atomicity, Consistency, Isolation, Durability",
-          "Access, Control, Identity, Data",
-          "Audit, Cache, Index, Disk",
-          "Không đáp án nào"
-        ],
-        "answer": 0,
-        "explain": "ACID là 4 tính chất của transaction.",
-        "category": "SQL"
-      },
-      {
-        "question": "GROUP BY dùng để làm gì?",
-        "options": [
-          "Nhóm dữ liệu",
-          "Xóa dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "GROUP BY dùng nhóm dữ liệu theo cột.",
-        "category": "SQL"
-      },
-      {
-        "question": "ORDER BY dùng để làm gì?",
-        "options": [
-          "Lọc dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Nhóm dữ liệu",
-          "Tạo khóa"
-        ],
-        "answer": 1,
-        "explain": "ORDER BY sắp xếp tăng/giảm.",
-        "category": "SQL"
-      },
-      {
-        "question": "COUNT(*) dùng để làm gì?",
-        "options": [
-          "Đếm dòng",
-          "Tính tổng",
-          "Tính trung bình",
-          "Tìm lớn nhất"
-        ],
-        "answer": 0,
-        "explain": "COUNT(*) đếm số bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Primary Key có đặc điểm nào?",
-        "options": [
-          "Cho phép NULL",
-          "Được trùng lặp",
-          "Không NULL và không trùng",
-          "Không tạo index"
-        ],
-        "answer": 2,
-        "explain": "Primary Key dùng định danh duy nhất bản ghi.",
-        "category": "SQL"
-      }
-    ]
-  },
-  {
-    "day": 2,
-    "title": "SQL nâng cao",
-    "duration": 20,
-    "questions": [
-      {
-        "question": "WHERE khác HAVING ở điểm nào?",
-        "options": [
-          "WHERE lọc sau GROUP BY",
-          "HAVING lọc trước GROUP BY",
-          "WHERE lọc trước GROUP BY, HAVING lọc sau GROUP BY",
-          "Không khác nhau"
-        ],
-        "answer": 2,
-        "explain": "WHERE lọc dòng trước nhóm, HAVING lọc nhóm.",
-        "category": "SQL"
-      },
-      {
-        "question": "INNER JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái",
-          "Chỉ bản ghi khớp giữa hai bảng",
-          "Toàn bộ bảng phải",
-          "Tích Descartes"
-        ],
-        "answer": 1,
-        "explain": "INNER JOIN chỉ lấy bản ghi thỏa điều kiện join.",
-        "category": "SQL"
-      },
-      {
-        "question": "LEFT JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái và phần khớp bảng phải",
-          "Chỉ bản ghi khớp",
-          "Toàn bộ bảng phải",
-          "Không có NULL"
-        ],
-        "answer": 0,
-        "explain": "LEFT JOIN giữ toàn bộ dữ liệu bảng bên trái.",
-        "category": "SQL"
-      },
-      {
-        "question": "Index dùng để làm gì?",
-        "options": [
-          "Tăng tốc truy vấn",
-          "Backup dữ liệu",
-          "Mã hóa dữ liệu",
-          "Xóa bảng"
-        ],
-        "answer": 0,
-        "explain": "Index giúp tăng tốc tìm kiếm nhưng có thể làm chậm ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "ACID gồm gì?",
-        "options": [
-          "Atomicity, Consistency, Isolation, Durability",
-          "Access, Control, Identity, Data",
-          "Audit, Cache, Index, Disk",
-          "Không đáp án nào"
-        ],
-        "answer": 0,
-        "explain": "ACID là 4 tính chất của transaction.",
-        "category": "SQL"
-      },
-      {
-        "question": "GROUP BY dùng để làm gì?",
-        "options": [
-          "Nhóm dữ liệu",
-          "Xóa dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "GROUP BY dùng nhóm dữ liệu theo cột.",
-        "category": "SQL"
-      },
-      {
-        "question": "ORDER BY dùng để làm gì?",
-        "options": [
-          "Lọc dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Nhóm dữ liệu",
-          "Tạo khóa"
-        ],
-        "answer": 1,
-        "explain": "ORDER BY sắp xếp tăng/giảm.",
-        "category": "SQL"
-      },
-      {
-        "question": "COUNT(*) dùng để làm gì?",
-        "options": [
-          "Đếm dòng",
-          "Tính tổng",
-          "Tính trung bình",
-          "Tìm lớn nhất"
-        ],
-        "answer": 0,
-        "explain": "COUNT(*) đếm số bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Primary Key có đặc điểm nào?",
-        "options": [
-          "Cho phép NULL",
-          "Được trùng lặp",
-          "Không NULL và không trùng",
-          "Không tạo index"
-        ],
-        "answer": 2,
-        "explain": "Primary Key dùng định danh duy nhất bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Foreign Key dùng để làm gì?",
-        "options": [
-          "Mã hóa dữ liệu",
-          "Liên kết dữ liệu giữa bảng",
-          "Xóa dữ liệu",
-          "Tạo giao diện"
-        ],
-        "answer": 1,
-        "explain": "Foreign Key liên kết bảng con với bảng cha.",
-        "category": "SQL"
-      },
-      {
-        "question": "WHERE khác HAVING ở điểm nào?",
-        "options": [
-          "WHERE lọc sau GROUP BY",
-          "HAVING lọc trước GROUP BY",
-          "WHERE lọc trước GROUP BY, HAVING lọc sau GROUP BY",
-          "Không khác nhau"
-        ],
-        "answer": 2,
-        "explain": "WHERE lọc dòng trước nhóm, HAVING lọc nhóm.",
-        "category": "SQL"
-      },
-      {
-        "question": "INNER JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái",
-          "Chỉ bản ghi khớp giữa hai bảng",
-          "Toàn bộ bảng phải",
-          "Tích Descartes"
-        ],
-        "answer": 1,
-        "explain": "INNER JOIN chỉ lấy bản ghi thỏa điều kiện join.",
-        "category": "SQL"
-      },
-      {
-        "question": "LEFT JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái và phần khớp bảng phải",
-          "Chỉ bản ghi khớp",
-          "Toàn bộ bảng phải",
-          "Không có NULL"
-        ],
-        "answer": 0,
-        "explain": "LEFT JOIN giữ toàn bộ dữ liệu bảng bên trái.",
-        "category": "SQL"
-      },
-      {
-        "question": "Index dùng để làm gì?",
-        "options": [
-          "Tăng tốc truy vấn",
-          "Backup dữ liệu",
-          "Mã hóa dữ liệu",
-          "Xóa bảng"
-        ],
-        "answer": 0,
-        "explain": "Index giúp tăng tốc tìm kiếm nhưng có thể làm chậm ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "ACID gồm gì?",
-        "options": [
-          "Atomicity, Consistency, Isolation, Durability",
-          "Access, Control, Identity, Data",
-          "Audit, Cache, Index, Disk",
-          "Không đáp án nào"
-        ],
-        "answer": 0,
-        "explain": "ACID là 4 tính chất của transaction.",
-        "category": "SQL"
-      },
-      {
-        "question": "GROUP BY dùng để làm gì?",
-        "options": [
-          "Nhóm dữ liệu",
-          "Xóa dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "GROUP BY dùng nhóm dữ liệu theo cột.",
-        "category": "SQL"
-      },
-      {
-        "question": "ORDER BY dùng để làm gì?",
-        "options": [
-          "Lọc dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Nhóm dữ liệu",
-          "Tạo khóa"
-        ],
-        "answer": 1,
-        "explain": "ORDER BY sắp xếp tăng/giảm.",
-        "category": "SQL"
-      },
-      {
-        "question": "COUNT(*) dùng để làm gì?",
-        "options": [
-          "Đếm dòng",
-          "Tính tổng",
-          "Tính trung bình",
-          "Tìm lớn nhất"
-        ],
-        "answer": 0,
-        "explain": "COUNT(*) đếm số bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Primary Key có đặc điểm nào?",
-        "options": [
-          "Cho phép NULL",
-          "Được trùng lặp",
-          "Không NULL và không trùng",
-          "Không tạo index"
-        ],
-        "answer": 2,
-        "explain": "Primary Key dùng định danh duy nhất bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Foreign Key dùng để làm gì?",
-        "options": [
-          "Mã hóa dữ liệu",
-          "Liên kết dữ liệu giữa bảng",
-          "Xóa dữ liệu",
-          "Tạo giao diện"
-        ],
-        "answer": 1,
-        "explain": "Foreign Key liên kết bảng con với bảng cha.",
-        "category": "SQL"
-      }
-    ]
-  },
-  {
-    "day": 3,
-    "title": "SQL tổng hợp",
-    "duration": 20,
-    "questions": [
-      {
-        "question": "INNER JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái",
-          "Chỉ bản ghi khớp giữa hai bảng",
-          "Toàn bộ bảng phải",
-          "Tích Descartes"
-        ],
-        "answer": 1,
-        "explain": "INNER JOIN chỉ lấy bản ghi thỏa điều kiện join.",
-        "category": "SQL"
-      },
-      {
-        "question": "LEFT JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái và phần khớp bảng phải",
-          "Chỉ bản ghi khớp",
-          "Toàn bộ bảng phải",
-          "Không có NULL"
-        ],
-        "answer": 0,
-        "explain": "LEFT JOIN giữ toàn bộ dữ liệu bảng bên trái.",
-        "category": "SQL"
-      },
-      {
-        "question": "Index dùng để làm gì?",
-        "options": [
-          "Tăng tốc truy vấn",
-          "Backup dữ liệu",
-          "Mã hóa dữ liệu",
-          "Xóa bảng"
-        ],
-        "answer": 0,
-        "explain": "Index giúp tăng tốc tìm kiếm nhưng có thể làm chậm ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "ACID gồm gì?",
-        "options": [
-          "Atomicity, Consistency, Isolation, Durability",
-          "Access, Control, Identity, Data",
-          "Audit, Cache, Index, Disk",
-          "Không đáp án nào"
-        ],
-        "answer": 0,
-        "explain": "ACID là 4 tính chất của transaction.",
-        "category": "SQL"
-      },
-      {
-        "question": "GROUP BY dùng để làm gì?",
-        "options": [
-          "Nhóm dữ liệu",
-          "Xóa dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "GROUP BY dùng nhóm dữ liệu theo cột.",
-        "category": "SQL"
-      },
-      {
-        "question": "ORDER BY dùng để làm gì?",
-        "options": [
-          "Lọc dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Nhóm dữ liệu",
-          "Tạo khóa"
-        ],
-        "answer": 1,
-        "explain": "ORDER BY sắp xếp tăng/giảm.",
-        "category": "SQL"
-      },
-      {
-        "question": "COUNT(*) dùng để làm gì?",
-        "options": [
-          "Đếm dòng",
-          "Tính tổng",
-          "Tính trung bình",
-          "Tìm lớn nhất"
-        ],
-        "answer": 0,
-        "explain": "COUNT(*) đếm số bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Primary Key có đặc điểm nào?",
-        "options": [
-          "Cho phép NULL",
-          "Được trùng lặp",
-          "Không NULL và không trùng",
-          "Không tạo index"
-        ],
-        "answer": 2,
-        "explain": "Primary Key dùng định danh duy nhất bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Foreign Key dùng để làm gì?",
-        "options": [
-          "Mã hóa dữ liệu",
-          "Liên kết dữ liệu giữa bảng",
-          "Xóa dữ liệu",
-          "Tạo giao diện"
-        ],
-        "answer": 1,
-        "explain": "Foreign Key liên kết bảng con với bảng cha.",
-        "category": "SQL"
-      },
-      {
-        "question": "WHERE khác HAVING ở điểm nào?",
-        "options": [
-          "WHERE lọc sau GROUP BY",
-          "HAVING lọc trước GROUP BY",
-          "WHERE lọc trước GROUP BY, HAVING lọc sau GROUP BY",
-          "Không khác nhau"
-        ],
-        "answer": 2,
-        "explain": "WHERE lọc dòng trước nhóm, HAVING lọc nhóm.",
-        "category": "SQL"
-      },
-      {
-        "question": "INNER JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái",
-          "Chỉ bản ghi khớp giữa hai bảng",
-          "Toàn bộ bảng phải",
-          "Tích Descartes"
-        ],
-        "answer": 1,
-        "explain": "INNER JOIN chỉ lấy bản ghi thỏa điều kiện join.",
-        "category": "SQL"
-      },
-      {
-        "question": "LEFT JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái và phần khớp bảng phải",
-          "Chỉ bản ghi khớp",
-          "Toàn bộ bảng phải",
-          "Không có NULL"
-        ],
-        "answer": 0,
-        "explain": "LEFT JOIN giữ toàn bộ dữ liệu bảng bên trái.",
-        "category": "SQL"
-      },
-      {
-        "question": "Index dùng để làm gì?",
-        "options": [
-          "Tăng tốc truy vấn",
-          "Backup dữ liệu",
-          "Mã hóa dữ liệu",
-          "Xóa bảng"
-        ],
-        "answer": 0,
-        "explain": "Index giúp tăng tốc tìm kiếm nhưng có thể làm chậm ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "ACID gồm gì?",
-        "options": [
-          "Atomicity, Consistency, Isolation, Durability",
-          "Access, Control, Identity, Data",
-          "Audit, Cache, Index, Disk",
-          "Không đáp án nào"
-        ],
-        "answer": 0,
-        "explain": "ACID là 4 tính chất của transaction.",
-        "category": "SQL"
-      },
-      {
-        "question": "GROUP BY dùng để làm gì?",
-        "options": [
-          "Nhóm dữ liệu",
-          "Xóa dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "GROUP BY dùng nhóm dữ liệu theo cột.",
-        "category": "SQL"
-      },
-      {
-        "question": "ORDER BY dùng để làm gì?",
-        "options": [
-          "Lọc dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Nhóm dữ liệu",
-          "Tạo khóa"
-        ],
-        "answer": 1,
-        "explain": "ORDER BY sắp xếp tăng/giảm.",
-        "category": "SQL"
-      },
-      {
-        "question": "COUNT(*) dùng để làm gì?",
-        "options": [
-          "Đếm dòng",
-          "Tính tổng",
-          "Tính trung bình",
-          "Tìm lớn nhất"
-        ],
-        "answer": 0,
-        "explain": "COUNT(*) đếm số bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Primary Key có đặc điểm nào?",
-        "options": [
-          "Cho phép NULL",
-          "Được trùng lặp",
-          "Không NULL và không trùng",
-          "Không tạo index"
-        ],
-        "answer": 2,
-        "explain": "Primary Key dùng định danh duy nhất bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Foreign Key dùng để làm gì?",
-        "options": [
-          "Mã hóa dữ liệu",
-          "Liên kết dữ liệu giữa bảng",
-          "Xóa dữ liệu",
-          "Tạo giao diện"
-        ],
-        "answer": 1,
-        "explain": "Foreign Key liên kết bảng con với bảng cha.",
-        "category": "SQL"
-      },
-      {
-        "question": "WHERE khác HAVING ở điểm nào?",
-        "options": [
-          "WHERE lọc sau GROUP BY",
-          "HAVING lọc trước GROUP BY",
-          "WHERE lọc trước GROUP BY, HAVING lọc sau GROUP BY",
-          "Không khác nhau"
-        ],
-        "answer": 2,
-        "explain": "WHERE lọc dòng trước nhóm, HAVING lọc nhóm.",
-        "category": "SQL"
-      }
-    ]
-  },
-  {
-    "day": 4,
-    "title": "OOP cơ bản",
-    "duration": 30,
-    "questions": [
-      {
-        "question": "Abstraction là gì?",
-        "options": [
-          "Trừu tượng hóa",
-          "Tạo bảng",
-          "Cấp phát IP",
-          "Xóa dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Trừu tượng hóa chỉ ra cái cần dùng, ẩn chi tiết.",
-        "category": "OOP"
-      },
-      {
-        "question": "Overloading là gì?",
-        "options": [
-          "Cùng tên khác tham số",
-          "Ghi đè lớp cha",
-          "Xóa phương thức",
-          "Tạo interface"
-        ],
-        "answer": 0,
-        "explain": "Overloading xảy ra trong cùng lớp hoặc phạm vi kế thừa.",
-        "category": "OOP"
-      },
-      {
-        "question": "Overriding là gì?",
-        "options": [
-          "Ghi đè phương thức lớp cha",
-          "Cùng tên khác tham số",
-          "Tạo constructor",
-          "Tạo package"
-        ],
-        "answer": 0,
-        "explain": "Overriding là lớp con định nghĩa lại method của lớp cha.",
-        "category": "OOP"
-      },
-      {
-        "question": "Interface dùng để làm gì?",
-        "options": [
-          "Mô tả hành vi cần triển khai",
-          "Lưu dữ liệu",
-          "Cấp IP",
-          "Tạo index"
-        ],
-        "answer": 0,
-        "explain": "Interface định nghĩa contract/hành vi.",
-        "category": "OOP"
-      },
-      {
-        "question": "Abstract class khác interface ở điểm nào?",
-        "options": [
-          "Có thể có triển khai một phần",
-          "Không dùng được trong Java",
-          "Chỉ dùng cho SQL",
-          "Không có method"
-        ],
-        "answer": 0,
-        "explain": "Abstract class có thể chứa method đã implement.",
-        "category": "OOP"
-      },
-      {
-        "question": "Constructor dùng để làm gì?",
-        "options": [
-          "Khởi tạo đối tượng",
-          "Xóa đối tượng",
-          "Sắp xếp dữ liệu",
-          "Backup"
-        ],
-        "answer": 0,
-        "explain": "Constructor chạy khi tạo object.",
-        "category": "OOP"
-      },
-      {
-        "question": "Đâu không phải tính chất OOP?",
-        "options": [
-          "Encapsulation",
-          "Inheritance",
-          "Normalization",
-          "Polymorphism"
-        ],
-        "answer": 2,
-        "explain": "Normalization thuộc CSDL.",
-        "category": "OOP"
-      },
-      {
-        "question": "Encapsulation là gì?",
-        "options": [
-          "Đóng gói dữ liệu và hành vi",
-          "Kế thừa lớp",
-          "Ghi đè hàm",
-          "Tạo database"
-        ],
-        "answer": 0,
-        "explain": "Đóng gói giúp che giấu chi tiết bên trong đối tượng.",
-        "category": "OOP"
-      },
-      {
-        "question": "Inheritance là gì?",
-        "options": [
-          "Kế thừa",
-          "Đa hình",
-          "Chuẩn hóa",
-          "Index"
-        ],
-        "answer": 0,
-        "explain": "Inheritance cho phép lớp con kế thừa lớp cha.",
-        "category": "OOP"
-      },
-      {
-        "question": "Polymorphism là gì?",
-        "options": [
-          "Đa hình",
-          "Đóng gói",
-          "Khóa chính",
-          "Mã hóa"
-        ],
-        "answer": 0,
-        "explain": "Đa hình cho phép cùng interface có nhiều cách thực thi.",
-        "category": "OOP"
-      },
-      {
-        "question": "Abstraction là gì?",
-        "options": [
-          "Trừu tượng hóa",
-          "Tạo bảng",
-          "Cấp phát IP",
-          "Xóa dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Trừu tượng hóa chỉ ra cái cần dùng, ẩn chi tiết.",
-        "category": "OOP"
-      },
-      {
-        "question": "Overloading là gì?",
-        "options": [
-          "Cùng tên khác tham số",
-          "Ghi đè lớp cha",
-          "Xóa phương thức",
-          "Tạo interface"
-        ],
-        "answer": 0,
-        "explain": "Overloading xảy ra trong cùng lớp hoặc phạm vi kế thừa.",
-        "category": "OOP"
-      },
-      {
-        "question": "Overriding là gì?",
-        "options": [
-          "Ghi đè phương thức lớp cha",
-          "Cùng tên khác tham số",
-          "Tạo constructor",
-          "Tạo package"
-        ],
-        "answer": 0,
-        "explain": "Overriding là lớp con định nghĩa lại method của lớp cha.",
-        "category": "OOP"
-      },
-      {
-        "question": "Interface dùng để làm gì?",
-        "options": [
-          "Mô tả hành vi cần triển khai",
-          "Lưu dữ liệu",
-          "Cấp IP",
-          "Tạo index"
-        ],
-        "answer": 0,
-        "explain": "Interface định nghĩa contract/hành vi.",
-        "category": "OOP"
-      },
-      {
-        "question": "Abstract class khác interface ở điểm nào?",
-        "options": [
-          "Có thể có triển khai một phần",
-          "Không dùng được trong Java",
-          "Chỉ dùng cho SQL",
-          "Không có method"
-        ],
-        "answer": 0,
-        "explain": "Abstract class có thể chứa method đã implement.",
-        "category": "OOP"
-      },
-      {
-        "question": "Constructor dùng để làm gì?",
-        "options": [
-          "Khởi tạo đối tượng",
-          "Xóa đối tượng",
-          "Sắp xếp dữ liệu",
-          "Backup"
-        ],
-        "answer": 0,
-        "explain": "Constructor chạy khi tạo object.",
-        "category": "OOP"
-      },
-      {
-        "question": "Đâu không phải tính chất OOP?",
-        "options": [
-          "Encapsulation",
-          "Inheritance",
-          "Normalization",
-          "Polymorphism"
-        ],
-        "answer": 2,
-        "explain": "Normalization thuộc CSDL.",
-        "category": "OOP"
-      },
-      {
-        "question": "Encapsulation là gì?",
-        "options": [
-          "Đóng gói dữ liệu và hành vi",
-          "Kế thừa lớp",
-          "Ghi đè hàm",
-          "Tạo database"
-        ],
-        "answer": 0,
-        "explain": "Đóng gói giúp che giấu chi tiết bên trong đối tượng.",
-        "category": "OOP"
-      },
-      {
-        "question": "Inheritance là gì?",
-        "options": [
-          "Kế thừa",
-          "Đa hình",
-          "Chuẩn hóa",
-          "Index"
-        ],
-        "answer": 0,
-        "explain": "Inheritance cho phép lớp con kế thừa lớp cha.",
-        "category": "OOP"
-      },
-      {
-        "question": "Polymorphism là gì?",
-        "options": [
-          "Đa hình",
-          "Đóng gói",
-          "Khóa chính",
-          "Mã hóa"
-        ],
-        "answer": 0,
-        "explain": "Đa hình cho phép cùng interface có nhiều cách thực thi.",
-        "category": "OOP"
-      },
-      {
-        "question": "Abstraction là gì?",
-        "options": [
-          "Trừu tượng hóa",
-          "Tạo bảng",
-          "Cấp phát IP",
-          "Xóa dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Trừu tượng hóa chỉ ra cái cần dùng, ẩn chi tiết.",
-        "category": "OOP"
-      },
-      {
-        "question": "Overloading là gì?",
-        "options": [
-          "Cùng tên khác tham số",
-          "Ghi đè lớp cha",
-          "Xóa phương thức",
-          "Tạo interface"
-        ],
-        "answer": 0,
-        "explain": "Overloading xảy ra trong cùng lớp hoặc phạm vi kế thừa.",
-        "category": "OOP"
-      },
-      {
-        "question": "Overriding là gì?",
-        "options": [
-          "Ghi đè phương thức lớp cha",
-          "Cùng tên khác tham số",
-          "Tạo constructor",
-          "Tạo package"
-        ],
-        "answer": 0,
-        "explain": "Overriding là lớp con định nghĩa lại method của lớp cha.",
-        "category": "OOP"
-      },
-      {
-        "question": "Interface dùng để làm gì?",
-        "options": [
-          "Mô tả hành vi cần triển khai",
-          "Lưu dữ liệu",
-          "Cấp IP",
-          "Tạo index"
-        ],
-        "answer": 0,
-        "explain": "Interface định nghĩa contract/hành vi.",
-        "category": "OOP"
-      },
-      {
-        "question": "Abstract class khác interface ở điểm nào?",
-        "options": [
-          "Có thể có triển khai một phần",
-          "Không dùng được trong Java",
-          "Chỉ dùng cho SQL",
-          "Không có method"
-        ],
-        "answer": 0,
-        "explain": "Abstract class có thể chứa method đã implement.",
-        "category": "OOP"
-      },
-      {
-        "question": "Constructor dùng để làm gì?",
-        "options": [
-          "Khởi tạo đối tượng",
-          "Xóa đối tượng",
-          "Sắp xếp dữ liệu",
-          "Backup"
-        ],
-        "answer": 0,
-        "explain": "Constructor chạy khi tạo object.",
-        "category": "OOP"
-      },
-      {
-        "question": "Đâu không phải tính chất OOP?",
-        "options": [
-          "Encapsulation",
-          "Inheritance",
-          "Normalization",
-          "Polymorphism"
-        ],
-        "answer": 2,
-        "explain": "Normalization thuộc CSDL.",
-        "category": "OOP"
-      },
-      {
-        "question": "Encapsulation là gì?",
-        "options": [
-          "Đóng gói dữ liệu và hành vi",
-          "Kế thừa lớp",
-          "Ghi đè hàm",
-          "Tạo database"
-        ],
-        "answer": 0,
-        "explain": "Đóng gói giúp che giấu chi tiết bên trong đối tượng.",
-        "category": "OOP"
-      },
-      {
-        "question": "Inheritance là gì?",
-        "options": [
-          "Kế thừa",
-          "Đa hình",
-          "Chuẩn hóa",
-          "Index"
-        ],
-        "answer": 0,
-        "explain": "Inheritance cho phép lớp con kế thừa lớp cha.",
-        "category": "OOP"
-      },
-      {
-        "question": "Polymorphism là gì?",
-        "options": [
-          "Đa hình",
-          "Đóng gói",
-          "Khóa chính",
-          "Mã hóa"
-        ],
-        "answer": 0,
-        "explain": "Đa hình cho phép cùng interface có nhiều cách thực thi.",
-        "category": "OOP"
-      }
-    ]
-  },
-  {
-    "day": 5,
-    "title": "OOP + Java",
-    "duration": 30,
-    "questions": [
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Map lưu dữ liệu dạng nào?",
-        "options": [
-          "Key-Value",
-          "Stack",
-          "Queue",
-          "Tree only"
-        ],
-        "answer": 0,
-        "explain": "Map lưu cặp khóa-giá trị.",
-        "category": "JAVA"
-      },
-      {
-        "question": "public static void main là gì?",
-        "options": [
-          "Điểm bắt đầu chương trình Java",
-          "Hàm xóa dữ liệu",
-          "Constructor",
-          "Interface"
-        ],
-        "answer": 0,
-        "explain": "main là entry point.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NullPointerException xảy ra khi nào?",
-        "options": [
-          "Gọi thuộc tính/phương thức trên biến null",
-          "Sai SQL",
-          "Sai port",
-          "Mất mạng"
-        ],
-        "answer": 0,
-        "explain": "NPE là lỗi runtime phổ biến.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Từ khóa kế thừa trong Java là gì?",
-        "options": [
-          "implements",
-          "extends",
-          "import",
-          "package"
-        ],
-        "answer": 1,
-        "explain": "extends dùng để kế thừa class.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Map lưu dữ liệu dạng nào?",
-        "options": [
-          "Key-Value",
-          "Stack",
-          "Queue",
-          "Tree only"
-        ],
-        "answer": 0,
-        "explain": "Map lưu cặp khóa-giá trị.",
-        "category": "JAVA"
-      },
-      {
-        "question": "public static void main là gì?",
-        "options": [
-          "Điểm bắt đầu chương trình Java",
-          "Hàm xóa dữ liệu",
-          "Constructor",
-          "Interface"
-        ],
-        "answer": 0,
-        "explain": "main là entry point.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NullPointerException xảy ra khi nào?",
-        "options": [
-          "Gọi thuộc tính/phương thức trên biến null",
-          "Sai SQL",
-          "Sai port",
-          "Mất mạng"
-        ],
-        "answer": 0,
-        "explain": "NPE là lỗi runtime phổ biến.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Từ khóa kế thừa trong Java là gì?",
-        "options": [
-          "implements",
-          "extends",
-          "import",
-          "package"
-        ],
-        "answer": 1,
-        "explain": "extends dùng để kế thừa class.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Map lưu dữ liệu dạng nào?",
-        "options": [
-          "Key-Value",
-          "Stack",
-          "Queue",
-          "Tree only"
-        ],
-        "answer": 0,
-        "explain": "Map lưu cặp khóa-giá trị.",
-        "category": "JAVA"
-      },
-      {
-        "question": "public static void main là gì?",
-        "options": [
-          "Điểm bắt đầu chương trình Java",
-          "Hàm xóa dữ liệu",
-          "Constructor",
-          "Interface"
-        ],
-        "answer": 0,
-        "explain": "main là entry point.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NullPointerException xảy ra khi nào?",
-        "options": [
-          "Gọi thuộc tính/phương thức trên biến null",
-          "Sai SQL",
-          "Sai port",
-          "Mất mạng"
-        ],
-        "answer": 0,
-        "explain": "NPE là lỗi runtime phổ biến.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Từ khóa kế thừa trong Java là gì?",
-        "options": [
-          "implements",
-          "extends",
-          "import",
-          "package"
-        ],
-        "answer": 1,
-        "explain": "extends dùng để kế thừa class.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      }
-    ]
-  },
-  {
-    "day": 6,
-    "title": "Java Core",
-    "duration": 30,
-    "questions": [
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Map lưu dữ liệu dạng nào?",
-        "options": [
-          "Key-Value",
-          "Stack",
-          "Queue",
-          "Tree only"
-        ],
-        "answer": 0,
-        "explain": "Map lưu cặp khóa-giá trị.",
-        "category": "JAVA"
-      },
-      {
-        "question": "public static void main là gì?",
-        "options": [
-          "Điểm bắt đầu chương trình Java",
-          "Hàm xóa dữ liệu",
-          "Constructor",
-          "Interface"
-        ],
-        "answer": 0,
-        "explain": "main là entry point.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NullPointerException xảy ra khi nào?",
-        "options": [
-          "Gọi thuộc tính/phương thức trên biến null",
-          "Sai SQL",
-          "Sai port",
-          "Mất mạng"
-        ],
-        "answer": 0,
-        "explain": "NPE là lỗi runtime phổ biến.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Từ khóa kế thừa trong Java là gì?",
-        "options": [
-          "implements",
-          "extends",
-          "import",
-          "package"
-        ],
-        "answer": 1,
-        "explain": "extends dùng để kế thừa class.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Map lưu dữ liệu dạng nào?",
-        "options": [
-          "Key-Value",
-          "Stack",
-          "Queue",
-          "Tree only"
-        ],
-        "answer": 0,
-        "explain": "Map lưu cặp khóa-giá trị.",
-        "category": "JAVA"
-      },
-      {
-        "question": "public static void main là gì?",
-        "options": [
-          "Điểm bắt đầu chương trình Java",
-          "Hàm xóa dữ liệu",
-          "Constructor",
-          "Interface"
-        ],
-        "answer": 0,
-        "explain": "main là entry point.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NullPointerException xảy ra khi nào?",
-        "options": [
-          "Gọi thuộc tính/phương thức trên biến null",
-          "Sai SQL",
-          "Sai port",
-          "Mất mạng"
-        ],
-        "answer": 0,
-        "explain": "NPE là lỗi runtime phổ biến.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Từ khóa kế thừa trong Java là gì?",
-        "options": [
-          "implements",
-          "extends",
-          "import",
-          "package"
-        ],
-        "answer": 1,
-        "explain": "extends dùng để kế thừa class.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Map lưu dữ liệu dạng nào?",
-        "options": [
-          "Key-Value",
-          "Stack",
-          "Queue",
-          "Tree only"
-        ],
-        "answer": 0,
-        "explain": "Map lưu cặp khóa-giá trị.",
-        "category": "JAVA"
-      },
-      {
-        "question": "public static void main là gì?",
-        "options": [
-          "Điểm bắt đầu chương trình Java",
-          "Hàm xóa dữ liệu",
-          "Constructor",
-          "Interface"
-        ],
-        "answer": 0,
-        "explain": "main là entry point.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NullPointerException xảy ra khi nào?",
-        "options": [
-          "Gọi thuộc tính/phương thức trên biến null",
-          "Sai SQL",
-          "Sai port",
-          "Mất mạng"
-        ],
-        "answer": 0,
-        "explain": "NPE là lỗi runtime phổ biến.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Từ khóa kế thừa trong Java là gì?",
-        "options": [
-          "implements",
-          "extends",
-          "import",
-          "package"
-        ],
-        "answer": 1,
-        "explain": "extends dùng để kế thừa class.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      }
-    ]
-  },
-  {
-    "day": 7,
-    "title": "Collection + Exception",
-    "duration": 30,
-    "questions": [
-      {
-        "question": "Map lưu dữ liệu dạng nào?",
-        "options": [
-          "Key-Value",
-          "Stack",
-          "Queue",
-          "Tree only"
-        ],
-        "answer": 0,
-        "explain": "Map lưu cặp khóa-giá trị.",
-        "category": "JAVA"
-      },
-      {
-        "question": "public static void main là gì?",
-        "options": [
-          "Điểm bắt đầu chương trình Java",
-          "Hàm xóa dữ liệu",
-          "Constructor",
-          "Interface"
-        ],
-        "answer": 0,
-        "explain": "main là entry point.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NullPointerException xảy ra khi nào?",
-        "options": [
-          "Gọi thuộc tính/phương thức trên biến null",
-          "Sai SQL",
-          "Sai port",
-          "Mất mạng"
-        ],
-        "answer": 0,
-        "explain": "NPE là lỗi runtime phổ biến.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Từ khóa kế thừa trong Java là gì?",
-        "options": [
-          "implements",
-          "extends",
-          "import",
-          "package"
-        ],
-        "answer": 1,
-        "explain": "extends dùng để kế thừa class.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Map lưu dữ liệu dạng nào?",
-        "options": [
-          "Key-Value",
-          "Stack",
-          "Queue",
-          "Tree only"
-        ],
-        "answer": 0,
-        "explain": "Map lưu cặp khóa-giá trị.",
-        "category": "JAVA"
-      },
-      {
-        "question": "public static void main là gì?",
-        "options": [
-          "Điểm bắt đầu chương trình Java",
-          "Hàm xóa dữ liệu",
-          "Constructor",
-          "Interface"
-        ],
-        "answer": 0,
-        "explain": "main là entry point.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NullPointerException xảy ra khi nào?",
-        "options": [
-          "Gọi thuộc tính/phương thức trên biến null",
-          "Sai SQL",
-          "Sai port",
-          "Mất mạng"
-        ],
-        "answer": 0,
-        "explain": "NPE là lỗi runtime phổ biến.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Từ khóa kế thừa trong Java là gì?",
-        "options": [
-          "implements",
-          "extends",
-          "import",
-          "package"
-        ],
-        "answer": 1,
-        "explain": "extends dùng để kế thừa class.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Map lưu dữ liệu dạng nào?",
-        "options": [
-          "Key-Value",
-          "Stack",
-          "Queue",
-          "Tree only"
-        ],
-        "answer": 0,
-        "explain": "Map lưu cặp khóa-giá trị.",
-        "category": "JAVA"
-      },
-      {
-        "question": "public static void main là gì?",
-        "options": [
-          "Điểm bắt đầu chương trình Java",
-          "Hàm xóa dữ liệu",
-          "Constructor",
-          "Interface"
-        ],
-        "answer": 0,
-        "explain": "main là entry point.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NullPointerException xảy ra khi nào?",
-        "options": [
-          "Gọi thuộc tính/phương thức trên biến null",
-          "Sai SQL",
-          "Sai port",
-          "Mất mạng"
-        ],
-        "answer": 0,
-        "explain": "NPE là lỗi runtime phổ biến.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Từ khóa kế thừa trong Java là gì?",
-        "options": [
-          "implements",
-          "extends",
-          "import",
-          "package"
-        ],
-        "answer": 1,
-        "explain": "extends dùng để kế thừa class.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      }
-    ]
-  },
-  {
-    "day": 8,
-    "title": "Mạng máy tính",
-    "duration": 30,
-    "questions": [
-      {
-        "question": "VLAN dùng để làm gì?",
-        "options": [
-          "Phân tách mạng logic",
-          "Mã hóa file",
-          "Tạo database",
-          "Sao lưu"
-        ],
-        "answer": 0,
-        "explain": "VLAN chia miền broadcast logic.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "OSI có bao nhiêu lớp?",
-        "options": [
-          "5",
-          "6",
-          "7",
-          "8"
-        ],
-        "answer": 2,
-        "explain": "OSI có 7 lớp.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "Port HTTPS là gì?",
-        "options": [
-          "80",
-          "21",
-          "22",
-          "443"
+        "explain": "`equals()` của String so sánh nội dung chuỗi."
+      },
+      {
+        "id": "JAVA-OOP-004",
+        "category": "Java Core + OOP",
+        "topic": "String",
+        "difficulty": 1,
+        "question": "StringBuilder có đặc điểm nào đúng?",
+        "options": [
+          "Immutable và thread-safe.",
+          "Chỉ dùng được với kiểu int.",
+          "Mutable và luôn thread-safe.",
+          "Mutable và không thread-safe."
         ],
         "answer": 3,
-        "explain": "HTTPS mặc định dùng 443.",
-        "category": "NETWORK"
+        "explain": "StringBuilder thay đổi được nội dung nhưng không synchronized nên không an toàn mặc định trong đa luồng."
       },
       {
-        "question": "DNS dùng để làm gì?",
+        "id": "JAVA-OOP-005",
+        "category": "Java Core + OOP",
+        "topic": "String",
+        "difficulty": 1,
+        "question": "StringBuffer khác StringBuilder chủ yếu ở điểm nào?",
         "options": [
-          "Phân giải tên miền thành IP",
-          "Cấp IP tự động",
-          "Mã hóa dữ liệu",
-          "Backup"
-        ],
-        "answer": 0,
-        "explain": "DNS chuyển domain sang IP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "DHCP dùng để làm gì?",
-        "options": [
-          "Cấp phát IP tự động",
-          "Phân giải tên miền",
-          "Tạo web",
-          "Quản lý DB"
-        ],
-        "answer": 0,
-        "explain": "DHCP cấp IP/gateway/DNS tự động.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "TCP khác UDP thế nào?",
-        "options": [
-          "TCP có kết nối và tin cậy hơn",
-          "UDP luôn tin cậy hơn",
-          "TCP không kiểm tra lỗi",
-          "Không khác"
-        ],
-        "answer": 0,
-        "explain": "TCP connection-oriented, UDP connectionless.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "NAT dùng để làm gì?",
-        "options": [
-          "Chuyển đổi địa chỉ IP",
-          "Tạo DNS",
-          "Tạo VLAN",
-          "Quản lý user"
-        ],
-        "answer": 0,
-        "explain": "NAT thường chuyển private IP ra public IP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "HTTP port mặc định?",
-        "options": [
-          "80",
-          "443",
-          "22",
-          "53"
-        ],
-        "answer": 0,
-        "explain": "HTTP dùng 80.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "SSH port mặc định?",
-        "options": [
-          "21",
-          "22",
-          "25",
-          "53"
-        ],
-        "answer": 1,
-        "explain": "SSH dùng 22.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "DNS port mặc định?",
-        "options": [
-          "53",
-          "80",
-          "443",
-          "110"
-        ],
-        "answer": 0,
-        "explain": "DNS dùng 53 TCP/UDP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "VLAN dùng để làm gì?",
-        "options": [
-          "Phân tách mạng logic",
-          "Mã hóa file",
-          "Tạo database",
-          "Sao lưu"
-        ],
-        "answer": 0,
-        "explain": "VLAN chia miền broadcast logic.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "OSI có bao nhiêu lớp?",
-        "options": [
-          "5",
-          "6",
-          "7",
-          "8"
-        ],
-        "answer": 2,
-        "explain": "OSI có 7 lớp.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "Port HTTPS là gì?",
-        "options": [
-          "80",
-          "21",
-          "22",
-          "443"
+          "StringBuffer không cho nối chuỗi.",
+          "StringBuffer là immutable.",
+          "StringBuffer luôn nhanh hơn StringBuilder.",
+          "StringBuffer thread-safe hơn do các method quan trọng được synchronized."
         ],
         "answer": 3,
-        "explain": "HTTPS mặc định dùng 443.",
-        "category": "NETWORK"
+        "explain": "StringBuffer synchronized nên an toàn hơn trong đa luồng nhưng thường chậm hơn."
       },
       {
-        "question": "DNS dùng để làm gì?",
+        "id": "JAVA-OOP-006",
+        "category": "Java Core + OOP",
+        "topic": "OOP",
+        "difficulty": 1,
+        "question": "Trong Java, OOP gồm 4 tính chất cơ bản nào?",
         "options": [
-          "Phân giải tên miền thành IP",
-          "Cấp IP tự động",
-          "Mã hóa dữ liệu",
-          "Backup"
+          "Đóng gói, kế thừa, đa hình, trừu tượng.",
+          "Bean, entity, repository, service.",
+          "HTTP, TCP, UDP, DNS.",
+          "Index, view, trigger, procedure."
         ],
         "answer": 0,
-        "explain": "DNS chuyển domain sang IP.",
-        "category": "NETWORK"
+        "explain": "OOP gồm Encapsulation, Inheritance, Polymorphism và Abstraction."
       },
       {
-        "question": "DHCP dùng để làm gì?",
+        "id": "JAVA-OOP-007",
+        "category": "Java Core + OOP",
+        "topic": "OOP",
+        "difficulty": 1,
+        "question": "Overloading trong Java là gì?",
         "options": [
-          "Cấp phát IP tự động",
-          "Phân giải tên miền",
-          "Tạo web",
-          "Quản lý DB"
-        ],
-        "answer": 0,
-        "explain": "DHCP cấp IP/gateway/DNS tự động.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "TCP khác UDP thế nào?",
-        "options": [
-          "TCP có kết nối và tin cậy hơn",
-          "UDP luôn tin cậy hơn",
-          "TCP không kiểm tra lỗi",
-          "Không khác"
-        ],
-        "answer": 0,
-        "explain": "TCP connection-oriented, UDP connectionless.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "NAT dùng để làm gì?",
-        "options": [
-          "Chuyển đổi địa chỉ IP",
-          "Tạo DNS",
-          "Tạo VLAN",
-          "Quản lý user"
-        ],
-        "answer": 0,
-        "explain": "NAT thường chuyển private IP ra public IP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "HTTP port mặc định?",
-        "options": [
-          "80",
-          "443",
-          "22",
-          "53"
-        ],
-        "answer": 0,
-        "explain": "HTTP dùng 80.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "SSH port mặc định?",
-        "options": [
-          "21",
-          "22",
-          "25",
-          "53"
-        ],
-        "answer": 1,
-        "explain": "SSH dùng 22.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "DNS port mặc định?",
-        "options": [
-          "53",
-          "80",
-          "443",
-          "110"
-        ],
-        "answer": 0,
-        "explain": "DNS dùng 53 TCP/UDP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "VLAN dùng để làm gì?",
-        "options": [
-          "Phân tách mạng logic",
-          "Mã hóa file",
-          "Tạo database",
-          "Sao lưu"
-        ],
-        "answer": 0,
-        "explain": "VLAN chia miền broadcast logic.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "OSI có bao nhiêu lớp?",
-        "options": [
-          "5",
-          "6",
-          "7",
-          "8"
-        ],
-        "answer": 2,
-        "explain": "OSI có 7 lớp.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "Port HTTPS là gì?",
-        "options": [
-          "80",
-          "21",
-          "22",
-          "443"
+          "Một interface có nhiều implementation.",
+          "Lớp con ghi đè phương thức của lớp cha.",
+          "Một class chỉ có một constructor.",
+          "Nhiều phương thức cùng tên nhưng khác danh sách tham số."
         ],
         "answer": 3,
-        "explain": "HTTPS mặc định dùng 443.",
-        "category": "NETWORK"
+        "explain": "Overloading dựa trên khác signature như số lượng, thứ tự hoặc kiểu tham số."
       },
       {
-        "question": "DNS dùng để làm gì?",
+        "id": "JAVA-OOP-008",
+        "category": "Java Core + OOP",
+        "topic": "OOP",
+        "difficulty": 1,
+        "question": "Overriding trong Java là gì?",
         "options": [
-          "Phân giải tên miền thành IP",
-          "Cấp IP tự động",
-          "Mã hóa dữ liệu",
-          "Backup"
-        ],
-        "answer": 0,
-        "explain": "DNS chuyển domain sang IP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "DHCP dùng để làm gì?",
-        "options": [
-          "Cấp phát IP tự động",
-          "Phân giải tên miền",
-          "Tạo web",
-          "Quản lý DB"
-        ],
-        "answer": 0,
-        "explain": "DHCP cấp IP/gateway/DNS tự động.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "TCP khác UDP thế nào?",
-        "options": [
-          "TCP có kết nối và tin cậy hơn",
-          "UDP luôn tin cậy hơn",
-          "TCP không kiểm tra lỗi",
-          "Không khác"
-        ],
-        "answer": 0,
-        "explain": "TCP connection-oriented, UDP connectionless.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "NAT dùng để làm gì?",
-        "options": [
-          "Chuyển đổi địa chỉ IP",
-          "Tạo DNS",
-          "Tạo VLAN",
-          "Quản lý user"
-        ],
-        "answer": 0,
-        "explain": "NAT thường chuyển private IP ra public IP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "HTTP port mặc định?",
-        "options": [
-          "80",
-          "443",
-          "22",
-          "53"
-        ],
-        "answer": 0,
-        "explain": "HTTP dùng 80.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "SSH port mặc định?",
-        "options": [
-          "21",
-          "22",
-          "25",
-          "53"
-        ],
-        "answer": 1,
-        "explain": "SSH dùng 22.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "DNS port mặc định?",
-        "options": [
-          "53",
-          "80",
-          "443",
-          "110"
-        ],
-        "answer": 0,
-        "explain": "DNS dùng 53 TCP/UDP.",
-        "category": "NETWORK"
-      }
-    ]
-  },
-  {
-    "day": 9,
-    "title": "Linux cơ bản",
-    "duration": 30,
-    "questions": [
-      {
-        "question": "systemctl dùng để làm gì?",
-        "options": [
-          "Quản lý service",
-          "Tạo file",
-          "Sửa file",
-          "Tìm chuỗi"
-        ],
-        "answer": 0,
-        "explain": "systemctl quản lý dịch vụ systemd.",
-        "category": "LINUX"
-      },
-      {
-        "question": "Lệnh xem thư mục hiện tại?",
-        "options": [
-          "ls",
-          "pwd",
-          "cd",
-          "mkdir"
-        ],
-        "answer": 1,
-        "explain": "pwd in ra current directory.",
-        "category": "LINUX"
-      },
-      {
-        "question": "chmod 755 tương ứng?",
-        "options": [
-          "rwx rwx rwx",
-          "rw- rw- rw-",
-          "rwx r-x r-x",
-          "r-- r-- r--"
+          "Nhiều method cùng tên nhưng khác tham số.",
+          "Ẩn biến local bằng biến global.",
+          "Lớp con định nghĩa lại phương thức đã có ở lớp cha.",
+          "Tạo object bằng từ khóa new."
         ],
         "answer": 2,
-        "explain": "7=rwx, 5=r-x.",
-        "category": "LINUX"
+        "explain": "Overriding giúp lớp con thay đổi hành vi method kế thừa."
       },
       {
-        "question": "Lệnh xem tiến trình?",
+        "id": "JAVA-OOP-009",
+        "category": "Java Core + OOP",
+        "topic": "OOP",
+        "difficulty": 1,
+        "question": "Từ khóa final khi áp dụng cho class có ý nghĩa gì?",
         "options": [
-          "ps -ef",
-          "mkdir",
-          "rm",
-          "pwd"
-        ],
-        "answer": 0,
-        "explain": "ps -ef liệt kê process.",
-        "category": "LINUX"
-      },
-      {
-        "question": "Lệnh xem cuối file log realtime?",
-        "options": [
-          "tail -f",
-          "cat -n",
-          "grep -v",
-          "chmod"
-        ],
-        "answer": 0,
-        "explain": "tail -f theo dõi cuối file.",
-        "category": "LINUX"
-      },
-      {
-        "question": "grep dùng để làm gì?",
-        "options": [
-          "Tìm chuỗi trong file/output",
-          "Xóa file",
-          "Đổi quyền",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "grep lọc theo pattern.",
-        "category": "LINUX"
-      },
-      {
-        "question": "Lệnh tìm file?",
-        "options": [
-          "find",
-          "free",
-          "df",
-          "top"
-        ],
-        "answer": 0,
-        "explain": "find tìm file/thư mục.",
-        "category": "LINUX"
-      },
-      {
-        "question": "df -h dùng để xem gì?",
-        "options": [
-          "Dung lượng filesystem",
-          "RAM",
-          "CPU",
-          "Process"
-        ],
-        "answer": 0,
-        "explain": "df -h hiển thị disk theo filesystem.",
-        "category": "LINUX"
-      },
-      {
-        "question": "free -m dùng để xem gì?",
-        "options": [
-          "RAM",
-          "Disk",
-          "Network",
-          "User"
-        ],
-        "answer": 0,
-        "explain": "free hiển thị bộ nhớ.",
-        "category": "LINUX"
-      },
-      {
-        "question": "chown dùng để làm gì?",
-        "options": [
-          "Đổi owner file",
-          "Đổi quyền số",
-          "Xem log",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "chown đổi chủ sở hữu.",
-        "category": "LINUX"
-      },
-      {
-        "question": "systemctl dùng để làm gì?",
-        "options": [
-          "Quản lý service",
-          "Tạo file",
-          "Sửa file",
-          "Tìm chuỗi"
-        ],
-        "answer": 0,
-        "explain": "systemctl quản lý dịch vụ systemd.",
-        "category": "LINUX"
-      },
-      {
-        "question": "Lệnh xem thư mục hiện tại?",
-        "options": [
-          "ls",
-          "pwd",
-          "cd",
-          "mkdir"
-        ],
-        "answer": 1,
-        "explain": "pwd in ra current directory.",
-        "category": "LINUX"
-      },
-      {
-        "question": "chmod 755 tương ứng?",
-        "options": [
-          "rwx rwx rwx",
-          "rw- rw- rw-",
-          "rwx r-x r-x",
-          "r-- r-- r--"
+          "Class đó tự động thread-safe.",
+          "Class đó chỉ chứa static method.",
+          "Class đó không thể bị kế thừa.",
+          "Class đó không thể tạo object."
         ],
         "answer": 2,
-        "explain": "7=rwx, 5=r-x.",
-        "category": "LINUX"
+        "explain": "final class không cho class khác extends."
       },
       {
-        "question": "Lệnh xem tiến trình?",
+        "id": "JAVA-OOP-010",
+        "category": "Java Core + OOP",
+        "topic": "OOP",
+        "difficulty": 1,
+        "question": "Từ khóa final khi áp dụng cho biến có ý nghĩa gì?",
         "options": [
-          "ps -ef",
-          "mkdir",
-          "rm",
-          "pwd"
-        ],
-        "answer": 0,
-        "explain": "ps -ef liệt kê process.",
-        "category": "LINUX"
-      },
-      {
-        "question": "Lệnh xem cuối file log realtime?",
-        "options": [
-          "tail -f",
-          "cat -n",
-          "grep -v",
-          "chmod"
-        ],
-        "answer": 0,
-        "explain": "tail -f theo dõi cuối file.",
-        "category": "LINUX"
-      },
-      {
-        "question": "grep dùng để làm gì?",
-        "options": [
-          "Tìm chuỗi trong file/output",
-          "Xóa file",
-          "Đổi quyền",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "grep lọc theo pattern.",
-        "category": "LINUX"
-      },
-      {
-        "question": "Lệnh tìm file?",
-        "options": [
-          "find",
-          "free",
-          "df",
-          "top"
-        ],
-        "answer": 0,
-        "explain": "find tìm file/thư mục.",
-        "category": "LINUX"
-      },
-      {
-        "question": "df -h dùng để xem gì?",
-        "options": [
-          "Dung lượng filesystem",
-          "RAM",
-          "CPU",
-          "Process"
-        ],
-        "answer": 0,
-        "explain": "df -h hiển thị disk theo filesystem.",
-        "category": "LINUX"
-      },
-      {
-        "question": "free -m dùng để xem gì?",
-        "options": [
-          "RAM",
-          "Disk",
-          "Network",
-          "User"
-        ],
-        "answer": 0,
-        "explain": "free hiển thị bộ nhớ.",
-        "category": "LINUX"
-      },
-      {
-        "question": "chown dùng để làm gì?",
-        "options": [
-          "Đổi owner file",
-          "Đổi quyền số",
-          "Xem log",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "chown đổi chủ sở hữu.",
-        "category": "LINUX"
-      },
-      {
-        "question": "systemctl dùng để làm gì?",
-        "options": [
-          "Quản lý service",
-          "Tạo file",
-          "Sửa file",
-          "Tìm chuỗi"
-        ],
-        "answer": 0,
-        "explain": "systemctl quản lý dịch vụ systemd.",
-        "category": "LINUX"
-      },
-      {
-        "question": "Lệnh xem thư mục hiện tại?",
-        "options": [
-          "ls",
-          "pwd",
-          "cd",
-          "mkdir"
+          "Object bên trong biến luôn immutable.",
+          "Biến không thể được gán lại sau khi đã khởi tạo.",
+          "Biến được lưu ngoài Heap.",
+          "Biến chỉ dùng trong static method."
         ],
         "answer": 1,
-        "explain": "pwd in ra current directory.",
-        "category": "LINUX"
+        "explain": "final ngăn gán lại biến. Nếu biến là reference tới object mutable thì object vẫn có thể đổi trạng thái."
       },
       {
-        "question": "chmod 755 tương ứng?",
+        "id": "JAVA-OOP-011",
+        "category": "Java Core + OOP",
+        "topic": "OOP",
+        "difficulty": 1,
+        "question": "Abstract class khác interface ở điểm nào trong thiết kế thông thường?",
         "options": [
-          "rwx rwx rwx",
-          "rw- rw- rw-",
-          "rwx r-x r-x",
-          "r-- r-- r--"
+          "Abstract class có thể có state và constructor.",
+          "Interface luôn có constructor.",
+          "Abstract class không thể có method đã implement.",
+          "Interface không thể khai báo method."
+        ],
+        "answer": 0,
+        "explain": "Abstract class có thể có field, constructor và method đã cài đặt."
+      },
+      {
+        "id": "JAVA-OOP-012",
+        "category": "Java Core + OOP",
+        "topic": "OOP",
+        "difficulty": 1,
+        "question": "Khi nào nên ưu tiên interface?",
+        "options": [
+          "Khi chỉ cần tạo private constructor.",
+          "Khi muốn lưu trạng thái bắt buộc cho mọi object.",
+          "Khi muốn cấm mọi class implement.",
+          "Khi muốn định nghĩa hợp đồng hành vi cho nhiều class không nhất thiết cùng cây kế thừa."
+        ],
+        "answer": 3,
+        "explain": "Interface phù hợp để mô tả hành vi chung và giảm phụ thuộc vào class cụ thể."
+      },
+      {
+        "id": "JAVA-OOP-013",
+        "category": "Java Core + OOP",
+        "topic": "OOP",
+        "difficulty": 1,
+        "question": "Encapsulation có mục đích chính là gì?",
+        "options": [
+          "Bắt buộc mọi class phải extends nhau.",
+          "Tự động tạo REST API.",
+          "Che giấu dữ liệu nội bộ và kiểm soát truy cập qua method.",
+          "Tăng tốc độ truy vấn SQL."
         ],
         "answer": 2,
-        "explain": "7=rwx, 5=r-x.",
-        "category": "LINUX"
-      },
-      {
-        "question": "Lệnh xem tiến trình?",
-        "options": [
-          "ps -ef",
-          "mkdir",
-          "rm",
-          "pwd"
-        ],
-        "answer": 0,
-        "explain": "ps -ef liệt kê process.",
-        "category": "LINUX"
-      },
-      {
-        "question": "Lệnh xem cuối file log realtime?",
-        "options": [
-          "tail -f",
-          "cat -n",
-          "grep -v",
-          "chmod"
-        ],
-        "answer": 0,
-        "explain": "tail -f theo dõi cuối file.",
-        "category": "LINUX"
-      },
-      {
-        "question": "grep dùng để làm gì?",
-        "options": [
-          "Tìm chuỗi trong file/output",
-          "Xóa file",
-          "Đổi quyền",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "grep lọc theo pattern.",
-        "category": "LINUX"
-      },
-      {
-        "question": "Lệnh tìm file?",
-        "options": [
-          "find",
-          "free",
-          "df",
-          "top"
-        ],
-        "answer": 0,
-        "explain": "find tìm file/thư mục.",
-        "category": "LINUX"
-      },
-      {
-        "question": "df -h dùng để xem gì?",
-        "options": [
-          "Dung lượng filesystem",
-          "RAM",
-          "CPU",
-          "Process"
-        ],
-        "answer": 0,
-        "explain": "df -h hiển thị disk theo filesystem.",
-        "category": "LINUX"
-      },
-      {
-        "question": "free -m dùng để xem gì?",
-        "options": [
-          "RAM",
-          "Disk",
-          "Network",
-          "User"
-        ],
-        "answer": 0,
-        "explain": "free hiển thị bộ nhớ.",
-        "category": "LINUX"
-      },
-      {
-        "question": "chown dùng để làm gì?",
-        "options": [
-          "Đổi owner file",
-          "Đổi quyền số",
-          "Xem log",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "chown đổi chủ sở hữu.",
-        "category": "LINUX"
-      }
-    ]
-  },
-  {
-    "day": 10,
-    "title": "Web/API",
-    "duration": 30,
-    "questions": [
-      {
-        "question": "GET dùng để làm gì?",
-        "options": [
-          "Lấy dữ liệu",
-          "Tạo dữ liệu",
-          "Xóa dữ liệu",
-          "Mã hóa"
-        ],
-        "answer": 0,
-        "explain": "GET thường dùng đọc dữ liệu.",
-        "category": "API"
-      },
-      {
-        "question": "POST dùng để làm gì?",
-        "options": [
-          "Tạo/gửi dữ liệu",
-          "Chỉ lấy dữ liệu",
-          "Xóa dữ liệu",
-          "Ping mạng"
-        ],
-        "answer": 0,
-        "explain": "POST thường gửi body để tạo dữ liệu.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 404 là gì?",
-        "options": [
-          "Không tìm thấy",
-          "Thành công",
-          "Lỗi server",
-          "Không có quyền"
-        ],
-        "answer": 0,
-        "explain": "404 Not Found.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 500 là gì?",
-        "options": [
-          "Lỗi server",
-          "Không tìm thấy",
-          "Thành công",
-          "Sai mật khẩu"
-        ],
-        "answer": 0,
-        "explain": "500 Internal Server Error.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 401 là gì?",
-        "options": [
-          "Chưa xác thực",
-          "Không tìm thấy",
-          "Lỗi server",
-          "Thành công"
-        ],
-        "answer": 0,
-        "explain": "401 Unauthorized.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 403 là gì?",
-        "options": [
-          "Không có quyền",
-          "Chưa login",
-          "Thành công",
-          "Sai method"
-        ],
-        "answer": 0,
-        "explain": "403 Forbidden.",
-        "category": "API"
-      },
-      {
-        "question": "REST API thường dùng giao thức nào?",
-        "options": [
-          "HTTP",
-          "FTP",
-          "SMTP",
-          "SNMP"
-        ],
-        "answer": 0,
-        "explain": "REST phổ biến trên HTTP.",
-        "category": "API"
-      },
-      {
-        "question": "JSON là gì?",
-        "options": [
-          "Định dạng trao đổi dữ liệu",
-          "Hệ điều hành",
-          "Database",
-          "Router"
-        ],
-        "answer": 0,
-        "explain": "JSON là text format phổ biến.",
-        "category": "API"
-      },
-      {
-        "question": "PUT khác PATCH thế nào?",
-        "options": [
-          "PUT cập nhật toàn bộ, PATCH cập nhật một phần",
-          "Không khác",
-          "PATCH xóa dữ liệu",
-          "PUT chỉ lấy dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "PUT thường replace, PATCH partial update.",
-        "category": "API"
-      },
-      {
-        "question": "JWT dùng để làm gì?",
-        "options": [
-          "Xác thực/trao đổi thông tin dạng token",
-          "Tạo database",
-          "Cấp IP",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "JWT là token thường dùng auth.",
-        "category": "API"
-      },
-      {
-        "question": "GET dùng để làm gì?",
-        "options": [
-          "Lấy dữ liệu",
-          "Tạo dữ liệu",
-          "Xóa dữ liệu",
-          "Mã hóa"
-        ],
-        "answer": 0,
-        "explain": "GET thường dùng đọc dữ liệu.",
-        "category": "API"
-      },
-      {
-        "question": "POST dùng để làm gì?",
-        "options": [
-          "Tạo/gửi dữ liệu",
-          "Chỉ lấy dữ liệu",
-          "Xóa dữ liệu",
-          "Ping mạng"
-        ],
-        "answer": 0,
-        "explain": "POST thường gửi body để tạo dữ liệu.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 404 là gì?",
-        "options": [
-          "Không tìm thấy",
-          "Thành công",
-          "Lỗi server",
-          "Không có quyền"
-        ],
-        "answer": 0,
-        "explain": "404 Not Found.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 500 là gì?",
-        "options": [
-          "Lỗi server",
-          "Không tìm thấy",
-          "Thành công",
-          "Sai mật khẩu"
-        ],
-        "answer": 0,
-        "explain": "500 Internal Server Error.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 401 là gì?",
-        "options": [
-          "Chưa xác thực",
-          "Không tìm thấy",
-          "Lỗi server",
-          "Thành công"
-        ],
-        "answer": 0,
-        "explain": "401 Unauthorized.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 403 là gì?",
-        "options": [
-          "Không có quyền",
-          "Chưa login",
-          "Thành công",
-          "Sai method"
-        ],
-        "answer": 0,
-        "explain": "403 Forbidden.",
-        "category": "API"
-      },
-      {
-        "question": "REST API thường dùng giao thức nào?",
-        "options": [
-          "HTTP",
-          "FTP",
-          "SMTP",
-          "SNMP"
-        ],
-        "answer": 0,
-        "explain": "REST phổ biến trên HTTP.",
-        "category": "API"
-      },
-      {
-        "question": "JSON là gì?",
-        "options": [
-          "Định dạng trao đổi dữ liệu",
-          "Hệ điều hành",
-          "Database",
-          "Router"
-        ],
-        "answer": 0,
-        "explain": "JSON là text format phổ biến.",
-        "category": "API"
-      },
-      {
-        "question": "PUT khác PATCH thế nào?",
-        "options": [
-          "PUT cập nhật toàn bộ, PATCH cập nhật một phần",
-          "Không khác",
-          "PATCH xóa dữ liệu",
-          "PUT chỉ lấy dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "PUT thường replace, PATCH partial update.",
-        "category": "API"
-      },
-      {
-        "question": "JWT dùng để làm gì?",
-        "options": [
-          "Xác thực/trao đổi thông tin dạng token",
-          "Tạo database",
-          "Cấp IP",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "JWT là token thường dùng auth.",
-        "category": "API"
-      },
-      {
-        "question": "GET dùng để làm gì?",
-        "options": [
-          "Lấy dữ liệu",
-          "Tạo dữ liệu",
-          "Xóa dữ liệu",
-          "Mã hóa"
-        ],
-        "answer": 0,
-        "explain": "GET thường dùng đọc dữ liệu.",
-        "category": "API"
-      },
-      {
-        "question": "POST dùng để làm gì?",
-        "options": [
-          "Tạo/gửi dữ liệu",
-          "Chỉ lấy dữ liệu",
-          "Xóa dữ liệu",
-          "Ping mạng"
-        ],
-        "answer": 0,
-        "explain": "POST thường gửi body để tạo dữ liệu.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 404 là gì?",
-        "options": [
-          "Không tìm thấy",
-          "Thành công",
-          "Lỗi server",
-          "Không có quyền"
-        ],
-        "answer": 0,
-        "explain": "404 Not Found.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 500 là gì?",
-        "options": [
-          "Lỗi server",
-          "Không tìm thấy",
-          "Thành công",
-          "Sai mật khẩu"
-        ],
-        "answer": 0,
-        "explain": "500 Internal Server Error.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 401 là gì?",
-        "options": [
-          "Chưa xác thực",
-          "Không tìm thấy",
-          "Lỗi server",
-          "Thành công"
-        ],
-        "answer": 0,
-        "explain": "401 Unauthorized.",
-        "category": "API"
-      },
-      {
-        "question": "HTTP 403 là gì?",
-        "options": [
-          "Không có quyền",
-          "Chưa login",
-          "Thành công",
-          "Sai method"
-        ],
-        "answer": 0,
-        "explain": "403 Forbidden.",
-        "category": "API"
-      },
-      {
-        "question": "REST API thường dùng giao thức nào?",
-        "options": [
-          "HTTP",
-          "FTP",
-          "SMTP",
-          "SNMP"
-        ],
-        "answer": 0,
-        "explain": "REST phổ biến trên HTTP.",
-        "category": "API"
-      },
-      {
-        "question": "JSON là gì?",
-        "options": [
-          "Định dạng trao đổi dữ liệu",
-          "Hệ điều hành",
-          "Database",
-          "Router"
-        ],
-        "answer": 0,
-        "explain": "JSON là text format phổ biến.",
-        "category": "API"
-      },
-      {
-        "question": "PUT khác PATCH thế nào?",
-        "options": [
-          "PUT cập nhật toàn bộ, PATCH cập nhật một phần",
-          "Không khác",
-          "PATCH xóa dữ liệu",
-          "PUT chỉ lấy dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "PUT thường replace, PATCH partial update.",
-        "category": "API"
-      },
-      {
-        "question": "JWT dùng để làm gì?",
-        "options": [
-          "Xác thực/trao đổi thông tin dạng token",
-          "Tạo database",
-          "Cấp IP",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "JWT là token thường dùng auth.",
-        "category": "API"
-      }
-    ]
-  },
-  {
-    "day": 11,
-    "title": "An toàn thông tin",
-    "duration": 40,
-    "questions": [
-      {
-        "question": "XSS là gì?",
-        "options": [
-          "Chèn mã script độc hại vào web",
-          "Tấn công mạng vật lý",
-          "Mã hóa file",
-          "Cấp IP"
-        ],
-        "answer": 0,
-        "explain": "XSS thường chèn JavaScript.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "CSRF là gì?",
-        "options": [
-          "Lừa người dùng gửi request ngoài ý muốn",
-          "Tạo account",
-          "Dò port",
-          "Lỗi DNS"
-        ],
-        "answer": 0,
-        "explain": "CSRF lợi dụng phiên đăng nhập của nạn nhân.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Authentication là gì?",
-        "options": [
-          "Xác thực danh tính",
-          "Phân quyền",
-          "Mã hóa ổ đĩa",
-          "Sao lưu"
-        ],
-        "answer": 0,
-        "explain": "Authentication trả lời 'bạn là ai'.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Authorization là gì?",
-        "options": [
-          "Phân quyền truy cập",
-          "Đăng nhập",
-          "Cấp IP",
-          "Nén dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Authorization trả lời 'bạn được làm gì'.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Mật khẩu mạnh nên có gì?",
-        "options": [
-          "Chữ hoa, chữ thường, số, ký tự đặc biệt",
-          "Chỉ ngày sinh",
-          "Chỉ số điện thoại",
-          "Tên người dùng"
-        ],
-        "answer": 0,
-        "explain": "Password mạnh cần đủ độ phức tạp.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "HTTPS bảo vệ bằng gì?",
-        "options": [
-          "TLS/SSL",
-          "DNS",
-          "DHCP",
-          "NAT"
-        ],
-        "answer": 0,
-        "explain": "HTTPS dùng TLS để mã hóa.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "2FA là gì?",
-        "options": [
-          "Xác thực hai yếu tố",
-          "Hai firewall",
-          "Hai database",
-          "Hai IP"
-        ],
-        "answer": 0,
-        "explain": "2FA tăng an toàn đăng nhập.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Least privilege là gì?",
-        "options": [
-          "Cấp quyền tối thiểu cần thiết",
-          "Cấp toàn quyền",
-          "Không cần mật khẩu",
-          "Xóa user"
-        ],
-        "answer": 0,
-        "explain": "Nguyên tắc quyền tối thiểu.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Log dùng để làm gì trong ATTT?",
-        "options": [
-          "Theo dõi, điều tra sự kiện",
-          "Tăng RAM",
-          "Tạo UI",
-          "Backup ảnh"
-        ],
-        "answer": 0,
-        "explain": "Log phục vụ giám sát và điều tra.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "SQL Injection là gì?",
-        "options": [
-          "Chèn lệnh SQL độc hại",
-          "Mã hóa DB",
-          "Backup DB",
-          "Tạo index"
-        ],
-        "answer": 0,
-        "explain": "SQLi khai thác input để chạy SQL trái phép.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "XSS là gì?",
-        "options": [
-          "Chèn mã script độc hại vào web",
-          "Tấn công mạng vật lý",
-          "Mã hóa file",
-          "Cấp IP"
-        ],
-        "answer": 0,
-        "explain": "XSS thường chèn JavaScript.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "CSRF là gì?",
-        "options": [
-          "Lừa người dùng gửi request ngoài ý muốn",
-          "Tạo account",
-          "Dò port",
-          "Lỗi DNS"
-        ],
-        "answer": 0,
-        "explain": "CSRF lợi dụng phiên đăng nhập của nạn nhân.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Authentication là gì?",
-        "options": [
-          "Xác thực danh tính",
-          "Phân quyền",
-          "Mã hóa ổ đĩa",
-          "Sao lưu"
-        ],
-        "answer": 0,
-        "explain": "Authentication trả lời 'bạn là ai'.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Authorization là gì?",
-        "options": [
-          "Phân quyền truy cập",
-          "Đăng nhập",
-          "Cấp IP",
-          "Nén dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Authorization trả lời 'bạn được làm gì'.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Mật khẩu mạnh nên có gì?",
-        "options": [
-          "Chữ hoa, chữ thường, số, ký tự đặc biệt",
-          "Chỉ ngày sinh",
-          "Chỉ số điện thoại",
-          "Tên người dùng"
-        ],
-        "answer": 0,
-        "explain": "Password mạnh cần đủ độ phức tạp.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "HTTPS bảo vệ bằng gì?",
-        "options": [
-          "TLS/SSL",
-          "DNS",
-          "DHCP",
-          "NAT"
-        ],
-        "answer": 0,
-        "explain": "HTTPS dùng TLS để mã hóa.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "2FA là gì?",
-        "options": [
-          "Xác thực hai yếu tố",
-          "Hai firewall",
-          "Hai database",
-          "Hai IP"
-        ],
-        "answer": 0,
-        "explain": "2FA tăng an toàn đăng nhập.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Least privilege là gì?",
-        "options": [
-          "Cấp quyền tối thiểu cần thiết",
-          "Cấp toàn quyền",
-          "Không cần mật khẩu",
-          "Xóa user"
-        ],
-        "answer": 0,
-        "explain": "Nguyên tắc quyền tối thiểu.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Log dùng để làm gì trong ATTT?",
-        "options": [
-          "Theo dõi, điều tra sự kiện",
-          "Tăng RAM",
-          "Tạo UI",
-          "Backup ảnh"
-        ],
-        "answer": 0,
-        "explain": "Log phục vụ giám sát và điều tra.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "SQL Injection là gì?",
-        "options": [
-          "Chèn lệnh SQL độc hại",
-          "Mã hóa DB",
-          "Backup DB",
-          "Tạo index"
-        ],
-        "answer": 0,
-        "explain": "SQLi khai thác input để chạy SQL trái phép.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "XSS là gì?",
-        "options": [
-          "Chèn mã script độc hại vào web",
-          "Tấn công mạng vật lý",
-          "Mã hóa file",
-          "Cấp IP"
-        ],
-        "answer": 0,
-        "explain": "XSS thường chèn JavaScript.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "CSRF là gì?",
-        "options": [
-          "Lừa người dùng gửi request ngoài ý muốn",
-          "Tạo account",
-          "Dò port",
-          "Lỗi DNS"
-        ],
-        "answer": 0,
-        "explain": "CSRF lợi dụng phiên đăng nhập của nạn nhân.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Authentication là gì?",
-        "options": [
-          "Xác thực danh tính",
-          "Phân quyền",
-          "Mã hóa ổ đĩa",
-          "Sao lưu"
-        ],
-        "answer": 0,
-        "explain": "Authentication trả lời 'bạn là ai'.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Authorization là gì?",
-        "options": [
-          "Phân quyền truy cập",
-          "Đăng nhập",
-          "Cấp IP",
-          "Nén dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Authorization trả lời 'bạn được làm gì'.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Mật khẩu mạnh nên có gì?",
-        "options": [
-          "Chữ hoa, chữ thường, số, ký tự đặc biệt",
-          "Chỉ ngày sinh",
-          "Chỉ số điện thoại",
-          "Tên người dùng"
-        ],
-        "answer": 0,
-        "explain": "Password mạnh cần đủ độ phức tạp.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "HTTPS bảo vệ bằng gì?",
-        "options": [
-          "TLS/SSL",
-          "DNS",
-          "DHCP",
-          "NAT"
-        ],
-        "answer": 0,
-        "explain": "HTTPS dùng TLS để mã hóa.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "2FA là gì?",
-        "options": [
-          "Xác thực hai yếu tố",
-          "Hai firewall",
-          "Hai database",
-          "Hai IP"
-        ],
-        "answer": 0,
-        "explain": "2FA tăng an toàn đăng nhập.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Least privilege là gì?",
-        "options": [
-          "Cấp quyền tối thiểu cần thiết",
-          "Cấp toàn quyền",
-          "Không cần mật khẩu",
-          "Xóa user"
-        ],
-        "answer": 0,
-        "explain": "Nguyên tắc quyền tối thiểu.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Log dùng để làm gì trong ATTT?",
-        "options": [
-          "Theo dõi, điều tra sự kiện",
-          "Tăng RAM",
-          "Tạo UI",
-          "Backup ảnh"
-        ],
-        "answer": 0,
-        "explain": "Log phục vụ giám sát và điều tra.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "SQL Injection là gì?",
-        "options": [
-          "Chèn lệnh SQL độc hại",
-          "Mã hóa DB",
-          "Backup DB",
-          "Tạo index"
-        ],
-        "answer": 0,
-        "explain": "SQLi khai thác input để chạy SQL trái phép.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "XSS là gì?",
-        "options": [
-          "Chèn mã script độc hại vào web",
-          "Tấn công mạng vật lý",
-          "Mã hóa file",
-          "Cấp IP"
-        ],
-        "answer": 0,
-        "explain": "XSS thường chèn JavaScript.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "CSRF là gì?",
-        "options": [
-          "Lừa người dùng gửi request ngoài ý muốn",
-          "Tạo account",
-          "Dò port",
-          "Lỗi DNS"
-        ],
-        "answer": 0,
-        "explain": "CSRF lợi dụng phiên đăng nhập của nạn nhân.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Authentication là gì?",
-        "options": [
-          "Xác thực danh tính",
-          "Phân quyền",
-          "Mã hóa ổ đĩa",
-          "Sao lưu"
-        ],
-        "answer": 0,
-        "explain": "Authentication trả lời 'bạn là ai'.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Authorization là gì?",
-        "options": [
-          "Phân quyền truy cập",
-          "Đăng nhập",
-          "Cấp IP",
-          "Nén dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Authorization trả lời 'bạn được làm gì'.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Mật khẩu mạnh nên có gì?",
-        "options": [
-          "Chữ hoa, chữ thường, số, ký tự đặc biệt",
-          "Chỉ ngày sinh",
-          "Chỉ số điện thoại",
-          "Tên người dùng"
-        ],
-        "answer": 0,
-        "explain": "Password mạnh cần đủ độ phức tạp.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "HTTPS bảo vệ bằng gì?",
-        "options": [
-          "TLS/SSL",
-          "DNS",
-          "DHCP",
-          "NAT"
-        ],
-        "answer": 0,
-        "explain": "HTTPS dùng TLS để mã hóa.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "2FA là gì?",
-        "options": [
-          "Xác thực hai yếu tố",
-          "Hai firewall",
-          "Hai database",
-          "Hai IP"
-        ],
-        "answer": 0,
-        "explain": "2FA tăng an toàn đăng nhập.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Least privilege là gì?",
-        "options": [
-          "Cấp quyền tối thiểu cần thiết",
-          "Cấp toàn quyền",
-          "Không cần mật khẩu",
-          "Xóa user"
-        ],
-        "answer": 0,
-        "explain": "Nguyên tắc quyền tối thiểu.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Log dùng để làm gì trong ATTT?",
-        "options": [
-          "Theo dõi, điều tra sự kiện",
-          "Tăng RAM",
-          "Tạo UI",
-          "Backup ảnh"
-        ],
-        "answer": 0,
-        "explain": "Log phục vụ giám sát và điều tra.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "SQL Injection là gì?",
-        "options": [
-          "Chèn lệnh SQL độc hại",
-          "Mã hóa DB",
-          "Backup DB",
-          "Tạo index"
-        ],
-        "answer": 0,
-        "explain": "SQLi khai thác input để chạy SQL trái phép.",
-        "category": "SECURITY"
-      }
-    ]
-  },
-  {
-    "day": 12,
-    "title": "Logic/IQ",
-    "duration": 40,
-    "questions": [
-      {
-        "question": "LIFO là đặc trưng của?",
-        "options": [
-          "Queue",
-          "Stack",
-          "Graph",
-          "Map"
+        "explain": "Đóng gói giúp bảo vệ trạng thái object và giảm phụ thuộc trực tiếp."
+      },
+      {
+        "id": "JAVA-OOP-014",
+        "category": "Java Core + OOP",
+        "topic": "OOP",
+        "difficulty": 1,
+        "question": "Polymorphism trong Java thể hiện rõ nhất ở tình huống nào?",
+        "options": [
+          "Một file Java có nhiều comment.",
+          "Biến kiểu cha/interface tham chiếu tới object lớp con và gọi method override.",
+          "Một biến primitive đổi kiểu ngầm định.",
+          "Một câu SQL có nhiều JOIN."
         ],
         "answer": 1,
-        "explain": "Stack vào sau ra trước.",
-        "category": "LOGIC"
+        "explain": "Đa hình cho phép cùng lời gọi method nhưng hành vi phụ thuộc object runtime."
       },
       {
-        "question": "Binary Search yêu cầu dữ liệu thế nào?",
+        "id": "JAVA-OOP-015",
+        "category": "Java Core + OOP",
+        "topic": "Operator",
+        "difficulty": 1,
+        "question": "Kết quả của đoạn code sau là gì?\nint a = 5;\nSystem.out.println(a++);",
         "options": [
-          "Đã sắp xếp",
-          "Bị mã hóa",
-          "Có trùng",
-          "Rỗng"
+          "6",
+          "Runtime Error",
+          "Compile Error",
+          "5"
         ],
-        "answer": 0,
-        "explain": "Binary search cần sorted data.",
-        "category": "LOGIC"
+        "answer": 3,
+        "explain": "a++ là hậu tố: dùng giá trị hiện tại trước, sau đó mới tăng."
       },
       {
-        "question": "Độ phức tạp Binary Search?",
+        "id": "JAVA-OOP-016",
+        "category": "Java Core + OOP",
+        "topic": "Operator",
+        "difficulty": 2,
+        "question": "Kết quả của đoạn code sau là gì?\nint a = 5;\nSystem.out.println(++a);",
         "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
-        ],
-        "answer": 1,
-        "explain": "Mỗi bước giảm nửa không gian tìm kiếm.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Số tiếp theo: 3,6,9,12,?",
-        "options": [
-          "13",
-          "14",
-          "15",
-          "18"
+          "Compile Error",
+          "Runtime Error",
+          "6",
+          "5"
         ],
         "answer": 2,
-        "explain": "Cộng 3.",
-        "category": "LOGIC"
+        "explain": "++a là tiền tố: tăng trước rồi mới sử dụng giá trị."
       },
       {
-        "question": "Nếu A>B và B>C thì?",
+        "id": "JAVA-OOP-017",
+        "category": "Java Core + OOP",
+        "topic": "Primitive",
+        "difficulty": 2,
+        "question": "Kiểu dữ liệu nào là primitive trong Java?",
         "options": [
-          "A>C",
-          "C>A",
-          "A=C",
-          "Không xác định"
-        ],
-        "answer": 0,
-        "explain": "Tính bắc cầu.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Stack dùng thao tác nào phổ biến?",
-        "options": [
-          "push/pop",
-          "select/join",
-          "get/post",
-          "ping/traceroute"
-        ],
-        "answer": 0,
-        "explain": "Stack dùng push và pop.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Queue dùng thao tác nào phổ biến?",
-        "options": [
-          "enqueue/dequeue",
-          "commit/rollback",
-          "chmod/chown",
-          "dns/dhcp"
-        ],
-        "answer": 0,
-        "explain": "Queue dùng enqueue/dequeue.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Độ phức tạp duyệt mảng n phần tử?",
-        "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
+          "Integer",
+          "BigDecimal",
+          "int",
+          "String"
         ],
         "answer": 2,
-        "explain": "Duyệt từng phần tử là O(n).",
-        "category": "LOGIC"
+        "explain": "int là primitive. String, Integer và BigDecimal là object."
       },
       {
-        "question": "Dãy 1,2,4,8,16,?",
+        "id": "JAVA-OOP-018",
+        "category": "Java Core + OOP",
+        "topic": "Wrapper",
+        "difficulty": 2,
+        "question": "Wrapper class của int là gì?",
         "options": [
-          "20",
-          "24",
-          "32",
-          "64"
+          "Integer",
+          "Long",
+          "NumberOnly",
+          "Int"
+        ],
+        "answer": 0,
+        "explain": "int có wrapper class tương ứng là Integer."
+      },
+      {
+        "id": "JAVA-OOP-019",
+        "category": "Java Core + OOP",
+        "topic": "Wrapper",
+        "difficulty": 2,
+        "question": "Autoboxing trong Java là gì?",
+        "options": [
+          "Tự động chuyển String sang SQL.",
+          "Tự động đóng file.",
+          "Tự động tạo thread.",
+          "Tự động chuyển primitive sang wrapper object."
+        ],
+        "answer": 3,
+        "explain": "Ví dụ int được tự động đóng gói thành Integer khi cần."
+      },
+      {
+        "id": "JAVA-OOP-020",
+        "category": "Java Core + OOP",
+        "topic": "Wrapper",
+        "difficulty": 2,
+        "question": "Unboxing trong Java là gì?",
+        "options": [
+          "Tự động chuyển wrapper object sang primitive.",
+          "Tự động giải nén file zip.",
+          "Tự động chuyển class sang interface.",
+          "Tự động rollback transaction."
+        ],
+        "answer": 0,
+        "explain": "Ví dụ Integer được tự động chuyển về int khi cần."
+      },
+      {
+        "id": "JAVA-OOP-021",
+        "category": "Java Core + OOP",
+        "topic": "Wrapper",
+        "difficulty": 2,
+        "question": "Điều gì có thể xảy ra khi unboxing một Integer đang null?",
+        "options": [
+          "ClassCastException.",
+          "Compile Error luôn xảy ra.",
+          "Giá trị tự động thành 0.",
+          "NullPointerException."
+        ],
+        "answer": 3,
+        "explain": "Unboxing null sang primitive sẽ gây NullPointerException."
+      },
+      {
+        "id": "JAVA-OOP-022",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 2,
+        "question": "ArrayList phù hợp nhất khi nào?",
+        "options": [
+          "Cần truy cập phần tử theo index nhiều.",
+          "Cần tự động thread-safe.",
+          "Cần lưu key-value.",
+          "Cần thêm/xóa liên tục ở đầu danh sách rất lớn."
+        ],
+        "answer": 0,
+        "explain": "ArrayList dựa trên mảng động nên truy cập random theo index nhanh."
+      },
+      {
+        "id": "JAVA-OOP-023",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 2,
+        "question": "LinkedList trong Java là cấu trúc gì?",
+        "options": [
+          "Hash table.",
+          "Mảng cố định.",
+          "Cây nhị phân cân bằng.",
+          "Danh sách liên kết đôi."
+        ],
+        "answer": 3,
+        "explain": "LinkedList là doubly-linked list và implement List, Deque."
+      },
+      {
+        "id": "JAVA-OOP-024",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 2,
+        "question": "HashMap dùng để lưu dữ liệu dạng nào?",
+        "options": [
+          "Chỉ stack LIFO.",
+          "Chỉ danh sách có thứ tự.",
+          "Chỉ hàng đợi FIFO.",
+          "Key-value."
+        ],
+        "answer": 3,
+        "explain": "Map lưu dữ liệu theo cặp key-value."
+      },
+      {
+        "id": "JAVA-OOP-025",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 2,
+        "question": "HashMap có cho phép null key không?",
+        "options": [
+          "Cho phép nhiều null key.",
+          "Có, cho phép tối đa một null key.",
+          "Không bao giờ.",
+          "Chỉ cho phép null key khi synchronized."
+        ],
+        "answer": 1,
+        "explain": "HashMap cho phép một null key và nhiều null value."
+      },
+      {
+        "id": "JAVA-OOP-026",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 2,
+        "question": "ConcurrentHashMap có cho phép null key hoặc null value không?",
+        "options": [
+          "Không.",
+          "Có nhiều null key.",
+          "Chỉ null value, không null key.",
+          "Có một null key."
+        ],
+        "answer": 0,
+        "explain": "ConcurrentHashMap không cho phép null để tránh mơ hồ trong môi trường concurrent."
+      },
+      {
+        "id": "JAVA-OOP-027",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 2,
+        "question": "HashSet có đặc điểm nào?",
+        "options": [
+          "Cho phép key-value.",
+          "Không cho phần tử trùng lặp theo equals/hashCode.",
+          "Luôn sort tăng dần.",
+          "Luôn giữ thứ tự insert."
+        ],
+        "answer": 1,
+        "explain": "HashSet không lưu phần tử trùng theo logic equals/hashCode."
+      },
+      {
+        "id": "JAVA-OOP-028",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 2,
+        "question": "TreeSet có đặc điểm nào?",
+        "options": [
+          "Lưu phần tử theo thứ tự sắp xếp.",
+          "Luôn giữ thứ tự thêm vào.",
+          "Chỉ lưu được String.",
+          "Cho phép phần tử trùng lặp."
+        ],
+        "answer": 0,
+        "explain": "TreeSet sắp xếp theo natural order hoặc Comparator."
+      },
+      {
+        "id": "JAVA-OOP-029",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 2,
+        "question": "LinkedHashMap khác HashMap ở điểm nào?",
+        "options": [
+          "LinkedHashMap không cho null value.",
+          "LinkedHashMap không lưu key-value.",
+          "LinkedHashMap luôn thread-safe.",
+          "LinkedHashMap duy trì thứ tự duyệt ổn định theo insertion/access order."
+        ],
+        "answer": 3,
+        "explain": "LinkedHashMap có danh sách liên kết để duy trì thứ tự duyệt."
+      },
+      {
+        "id": "JAVA-OOP-030",
+        "category": "Java Core + OOP",
+        "topic": "Object",
+        "difficulty": 2,
+        "question": "equals() và hashCode() có quan hệ đúng nào?",
+        "options": [
+          "Nếu hashCode bằng nhau thì equals chắc chắn true.",
+          "Không có quan hệ gì.",
+          "Nếu hai object equals true thì hashCode phải bằng nhau.",
+          "Chỉ áp dụng cho String."
         ],
         "answer": 2,
-        "explain": "Nhân đôi mỗi bước.",
-        "category": "LOGIC"
+        "explain": "Contract bắt buộc equals true thì hashCode giống nhau; hash collision vẫn có thể xảy ra."
       },
       {
-        "question": "FIFO là đặc trưng của?",
+        "id": "JAVA-OOP-031",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 2,
+        "question": "Nếu dùng object mutable làm key trong HashMap rồi thay đổi field dùng trong hashCode, rủi ro là gì?",
         "options": [
-          "Stack",
-          "Queue",
-          "Tree",
-          "Graph"
-        ],
-        "answer": 1,
-        "explain": "Queue vào trước ra trước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "LIFO là đặc trưng của?",
-        "options": [
-          "Queue",
-          "Stack",
-          "Graph",
-          "Map"
-        ],
-        "answer": 1,
-        "explain": "Stack vào sau ra trước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Binary Search yêu cầu dữ liệu thế nào?",
-        "options": [
-          "Đã sắp xếp",
-          "Bị mã hóa",
-          "Có trùng",
-          "Rỗng"
+          "Có thể không tìm lại được value bằng key đó.",
+          "HashMap tự động cập nhật vị trí key.",
+          "Compile Error.",
+          "JVM tự rollback thay đổi."
         ],
         "answer": 0,
-        "explain": "Binary search cần sorted data.",
-        "category": "LOGIC"
+        "explain": "Thay đổi hashCode sau khi đưa vào HashMap làm sai bucket tra cứu."
       },
       {
-        "question": "Độ phức tạp Binary Search?",
+        "id": "JAVA-OOP-032",
+        "category": "Java Core + OOP",
+        "topic": "Exception",
+        "difficulty": 2,
+        "question": "Checked exception là gì?",
         "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
-        ],
-        "answer": 1,
-        "explain": "Mỗi bước giảm nửa không gian tìm kiếm.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Số tiếp theo: 3,6,9,12,?",
-        "options": [
-          "13",
-          "14",
-          "15",
-          "18"
+          "Warning không ảnh hưởng compile.",
+          "Exception chỉ xảy ra ở runtime và không cần khai báo.",
+          "Exception bị compiler yêu cầu catch hoặc throws.",
+          "Lỗi nghiêm trọng của JVM."
         ],
         "answer": 2,
-        "explain": "Cộng 3.",
-        "category": "LOGIC"
+        "explain": "Checked exception phải được xử lý hoặc khai báo throws."
       },
       {
-        "question": "Nếu A>B và B>C thì?",
+        "id": "JAVA-OOP-033",
+        "category": "Java Core + OOP",
+        "topic": "Exception",
+        "difficulty": 2,
+        "question": "RuntimeException thuộc nhóm nào?",
         "options": [
-          "A>C",
-          "C>A",
-          "A=C",
-          "Không xác định"
+          "Checked exception.",
+          "Unchecked exception.",
+          "Error.",
+          "Annotation."
+        ],
+        "answer": 1,
+        "explain": "RuntimeException và các lớp con là unchecked exception."
+      },
+      {
+        "id": "JAVA-OOP-034",
+        "category": "Java Core + OOP",
+        "topic": "Exception",
+        "difficulty": 2,
+        "question": "finally block trong Java thường dùng để làm gì?",
+        "options": [
+          "Thực hiện logic dọn dẹp tài nguyên sau try/catch.",
+          "Chỉ chạy khi có return.",
+          "Chỉ chạy khi không có exception.",
+          "Chỉ dùng để khai báo biến static."
         ],
         "answer": 0,
-        "explain": "Tính bắc cầu.",
-        "category": "LOGIC"
+        "explain": "finally thường chạy sau try/catch để cleanup, trừ một số trường hợp đặc biệt như System.exit."
       },
       {
-        "question": "Stack dùng thao tác nào phổ biến?",
+        "id": "JAVA-OOP-035",
+        "category": "Java Core + OOP",
+        "topic": "Exception",
+        "difficulty": 2,
+        "question": "try-with-resources yêu cầu resource implement interface nào?",
         "options": [
-          "push/pop",
-          "select/join",
-          "get/post",
-          "ping/traceroute"
+          "Runnable.",
+          "AutoCloseable.",
+          "Serializable.",
+          "Cloneable."
+        ],
+        "answer": 1,
+        "explain": "Resource trong try-with-resources cần implement AutoCloseable hoặc Closeable."
+      },
+      {
+        "id": "JAVA-OOP-036",
+        "category": "Java Core + OOP",
+        "topic": "JVM",
+        "difficulty": 3,
+        "question": "Garbage Collector thu hồi object khi nào?",
+        "options": [
+          "Khi biến final được khai báo.",
+          "Khi object không còn reachable từ GC roots.",
+          "Ngay khi object ra khỏi method trong mọi trường hợp.",
+          "Khi CPU đạt 100%."
+        ],
+        "answer": 1,
+        "explain": "GC dựa trên reachability, không đơn giản chỉ là hết scope."
+      },
+      {
+        "id": "JAVA-OOP-037",
+        "category": "Java Core + OOP",
+        "topic": "JVM",
+        "difficulty": 3,
+        "question": "Memory leak trong Java thường do nguyên nhân nào?",
+        "options": [
+          "Object không còn cần nhưng vẫn còn tham chiếu giữ lại.",
+          "Dùng quá nhiều biến primitive.",
+          "Dùng package private class.",
+          "Java không có Garbage Collector."
         ],
         "answer": 0,
-        "explain": "Stack dùng push và pop.",
-        "category": "LOGIC"
+        "explain": "Leak xảy ra khi object vẫn reachable dù không còn được sử dụng."
       },
       {
-        "question": "Queue dùng thao tác nào phổ biến?",
+        "id": "JAVA-OOP-038",
+        "category": "Java Core + OOP",
+        "topic": "Thread",
+        "difficulty": 3,
+        "question": "Từ khóa synchronized dùng để làm gì?",
         "options": [
-          "enqueue/dequeue",
-          "commit/rollback",
-          "chmod/chown",
-          "dns/dhcp"
+          "Tạo REST API.",
+          "Đồng bộ truy cập vào vùng tài nguyên dùng chung.",
+          "Tăng tốc mọi method.",
+          "Tự động serialize object."
         ],
-        "answer": 0,
-        "explain": "Queue dùng enqueue/dequeue.",
-        "category": "LOGIC"
+        "answer": 1,
+        "explain": "synchronized dùng monitor lock để tránh race condition."
       },
       {
-        "question": "Độ phức tạp duyệt mảng n phần tử?",
+        "id": "JAVA-OOP-039",
+        "category": "Java Core + OOP",
+        "topic": "Thread",
+        "difficulty": 3,
+        "question": "volatile KHÔNG đảm bảo điều gì?",
         "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
+          "Giúp thread thấy giá trị mới hơn.",
+          "Có thể dùng cho flag dừng thread đơn giản.",
+          "Không đảm bảo atomic cho thao tác count++.",
+          "Đảm bảo visibility."
         ],
         "answer": 2,
-        "explain": "Duyệt từng phần tử là O(n).",
-        "category": "LOGIC"
+        "explain": "count++ gồm nhiều bước đọc-sửa-ghi, volatile không biến thao tác này thành atomic."
       },
       {
-        "question": "Dãy 1,2,4,8,16,?",
+        "id": "JAVA-OOP-040",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 3,
+        "question": "ArrayList có thread-safe mặc định không?",
         "options": [
-          "20",
-          "24",
-          "32",
-          "64"
+          "Có.",
+          "Chỉ trên Java 17.",
+          "Không.",
+          "Chỉ khi size nhỏ hơn 10."
         ],
         "answer": 2,
-        "explain": "Nhân đôi mỗi bước.",
-        "category": "LOGIC"
+        "explain": "ArrayList không synchronized. Nhiều thread sửa đồng thời cần cơ chế đồng bộ."
       },
       {
-        "question": "FIFO là đặc trưng của?",
+        "id": "JAVA-OOP-041",
+        "category": "Java Core + OOP",
+        "topic": "Collection",
+        "difficulty": 3,
+        "question": "Iterator fail-fast nghĩa là gì?",
         "options": [
-          "Stack",
-          "Queue",
-          "Tree",
-          "Graph"
-        ],
-        "answer": 1,
-        "explain": "Queue vào trước ra trước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "LIFO là đặc trưng của?",
-        "options": [
-          "Queue",
-          "Stack",
-          "Graph",
-          "Map"
-        ],
-        "answer": 1,
-        "explain": "Stack vào sau ra trước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Binary Search yêu cầu dữ liệu thế nào?",
-        "options": [
-          "Đã sắp xếp",
-          "Bị mã hóa",
-          "Có trùng",
-          "Rỗng"
-        ],
-        "answer": 0,
-        "explain": "Binary search cần sorted data.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Độ phức tạp Binary Search?",
-        "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
-        ],
-        "answer": 1,
-        "explain": "Mỗi bước giảm nửa không gian tìm kiếm.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Số tiếp theo: 3,6,9,12,?",
-        "options": [
-          "13",
-          "14",
-          "15",
-          "18"
+          "Iterator tự copy toàn bộ collection.",
+          "Iterator luôn chạy nhanh hơn for loop.",
+          "Có thể ném ConcurrentModificationException khi collection bị sửa cấu trúc ngoài iterator.",
+          "Iterator tự khóa collection."
         ],
         "answer": 2,
-        "explain": "Cộng 3.",
-        "category": "LOGIC"
+        "explain": "Fail-fast giúp phát hiện sửa đổi đồng thời không hợp lệ khi duyệt."
       },
       {
-        "question": "Nếu A>B và B>C thì?",
+        "id": "JAVA-OOP-042",
+        "category": "Java Core + OOP",
+        "topic": "Generic",
+        "difficulty": 3,
+        "question": "Generic trong Java giúp ích gì?",
         "options": [
-          "A>C",
-          "C>A",
-          "A=C",
-          "Không xác định"
+          "Tăng type-safety tại compile time.",
+          "Bỏ cần JVM.",
+          "Tự động mã hóa dữ liệu.",
+          "Tăng tốc network."
         ],
         "answer": 0,
-        "explain": "Tính bắc cầu.",
-        "category": "LOGIC"
+        "explain": "Generic giúp compiler kiểm tra kiểu, giảm cast sai ở runtime."
       },
       {
-        "question": "Stack dùng thao tác nào phổ biến?",
+        "id": "JAVA-OOP-043",
+        "category": "Java Core + OOP",
+        "topic": "Lambda",
+        "difficulty": 3,
+        "question": "Lambda expression thường dùng với loại interface nào?",
         "options": [
-          "push/pop",
-          "select/join",
-          "get/post",
-          "ping/traceroute"
+          "Marker interface.",
+          "Functional interface.",
+          "Class abstract có constructor.",
+          "Interface có nhiều abstract method."
+        ],
+        "answer": 1,
+        "explain": "Functional interface có đúng một abstract method, phù hợp với lambda."
+      },
+      {
+        "id": "JAVA-OOP-044",
+        "category": "Java Core + OOP",
+        "topic": "Stream",
+        "difficulty": 3,
+        "question": "Stream API phù hợp nhất cho việc gì?",
+        "options": [
+          "Tạo index CSDL.",
+          "Thay thế mọi vòng lặp trong mọi trường hợp.",
+          "Quản lý transaction.",
+          "Xử lý dữ liệu theo pipeline như filter, map, reduce."
+        ],
+        "answer": 3,
+        "explain": "Stream hỗ trợ xử lý collection theo phong cách khai báo."
+      },
+      {
+        "id": "JAVA-OOP-045",
+        "category": "Java Core + OOP",
+        "topic": "Optional",
+        "difficulty": 3,
+        "question": "Optional nên dùng để làm gì?",
+        "options": [
+          "Bắt buộc dùng cho mọi method.",
+          "Biểu diễn rõ một giá trị có thể vắng mặt.",
+          "Tăng tốc HashMap.",
+          "Thay thế mọi field null trong entity JPA."
+        ],
+        "answer": 1,
+        "explain": "Optional phù hợp cho return value có thể không có, tránh lạm dụng trong field/entity."
+      },
+      {
+        "id": "JAVA-OOP-046",
+        "category": "Java Core + OOP",
+        "topic": "Design Pattern",
+        "difficulty": 3,
+        "question": "Singleton Pattern có rủi ro gì nếu triển khai không đúng trong môi trường đa luồng?",
+        "options": [
+          "Không thể dùng với interface.",
+          "Không thể compile.",
+          "Không thể có constructor private.",
+          "Có thể tạo ra nhiều instance."
+        ],
+        "answer": 3,
+        "explain": "Lazy singleton không đồng bộ có thể bị race condition."
+      },
+      {
+        "id": "JAVA-OOP-047",
+        "category": "Java Core + OOP",
+        "topic": "Design Pattern",
+        "difficulty": 3,
+        "question": "Factory Pattern giúp giảm phụ thuộc như thế nào?",
+        "options": [
+          "Client không cần biết chi tiết class cụ thể được khởi tạo.",
+          "Client không cần xử lý exception bao giờ.",
+          "Client tự động có database.",
+          "Client không cần JVM."
         ],
         "answer": 0,
-        "explain": "Stack dùng push và pop.",
-        "category": "LOGIC"
+        "explain": "Factory che giấu logic tạo object, giúp code dễ mở rộng."
       },
       {
-        "question": "Queue dùng thao tác nào phổ biến?",
+        "id": "JAVA-OOP-048",
+        "category": "Java Core + OOP",
+        "topic": "Design Pattern",
+        "difficulty": 3,
+        "question": "Builder Pattern phù hợp khi nào?",
         "options": [
-          "enqueue/dequeue",
-          "commit/rollback",
-          "chmod/chown",
-          "dns/dhcp"
+          "Object có nhiều tham số tùy chọn hoặc constructor quá dài.",
+          "Cần tạo thread-safe collection.",
+          "Cần sort list nhanh hơn.",
+          "Cần thay thế garbage collector."
         ],
         "answer": 0,
-        "explain": "Queue dùng enqueue/dequeue.",
-        "category": "LOGIC"
+        "explain": "Builder giúp code tạo object dễ đọc, tránh telescoping constructor."
       },
       {
-        "question": "Độ phức tạp duyệt mảng n phần tử?",
+        "id": "JAVA-OOP-049",
+        "category": "Java Core + OOP",
+        "topic": "Design Pattern",
+        "difficulty": 3,
+        "question": "Strategy Pattern dùng để giải quyết vấn đề gì?",
         "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
+          "Tự động tạo bảng database.",
+          "Đảm bảo chỉ có một object trong JVM.",
+          "Thay đổi thuật toán/hành vi linh hoạt tại runtime.",
+          "Tự động tăng heap."
         ],
         "answer": 2,
-        "explain": "Duyệt từng phần tử là O(n).",
-        "category": "LOGIC"
+        "explain": "Strategy đóng gói các thuật toán có thể hoán đổi."
       },
       {
-        "question": "Dãy 1,2,4,8,16,?",
+        "id": "JAVA-OOP-050",
+        "category": "Java Core + OOP",
+        "topic": "SOLID",
+        "difficulty": 3,
+        "question": "SOLID: chữ S - Single Responsibility Principle nghĩa là gì?",
         "options": [
-          "20",
-          "24",
-          "32",
-          "64"
+          "Một interface chỉ có một implementation.",
+          "Một project chỉ có một package.",
+          "Một class nên có một lý do chính để thay đổi.",
+          "Một class chỉ được có một method."
         ],
         "answer": 2,
-        "explain": "Nhân đôi mỗi bước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "FIFO là đặc trưng của?",
-        "options": [
-          "Stack",
-          "Queue",
-          "Tree",
-          "Graph"
-        ],
-        "answer": 1,
-        "explain": "Queue vào trước ra trước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "LIFO là đặc trưng của?",
-        "options": [
-          "Queue",
-          "Stack",
-          "Graph",
-          "Map"
-        ],
-        "answer": 1,
-        "explain": "Stack vào sau ra trước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Binary Search yêu cầu dữ liệu thế nào?",
-        "options": [
-          "Đã sắp xếp",
-          "Bị mã hóa",
-          "Có trùng",
-          "Rỗng"
-        ],
-        "answer": 0,
-        "explain": "Binary search cần sorted data.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Độ phức tạp Binary Search?",
-        "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
-        ],
-        "answer": 1,
-        "explain": "Mỗi bước giảm nửa không gian tìm kiếm.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Số tiếp theo: 3,6,9,12,?",
-        "options": [
-          "13",
-          "14",
-          "15",
-          "18"
-        ],
-        "answer": 2,
-        "explain": "Cộng 3.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Nếu A>B và B>C thì?",
-        "options": [
-          "A>C",
-          "C>A",
-          "A=C",
-          "Không xác định"
-        ],
-        "answer": 0,
-        "explain": "Tính bắc cầu.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Stack dùng thao tác nào phổ biến?",
-        "options": [
-          "push/pop",
-          "select/join",
-          "get/post",
-          "ping/traceroute"
-        ],
-        "answer": 0,
-        "explain": "Stack dùng push và pop.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Queue dùng thao tác nào phổ biến?",
-        "options": [
-          "enqueue/dequeue",
-          "commit/rollback",
-          "chmod/chown",
-          "dns/dhcp"
-        ],
-        "answer": 0,
-        "explain": "Queue dùng enqueue/dequeue.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Độ phức tạp duyệt mảng n phần tử?",
-        "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
-        ],
-        "answer": 2,
-        "explain": "Duyệt từng phần tử là O(n).",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Dãy 1,2,4,8,16,?",
-        "options": [
-          "20",
-          "24",
-          "32",
-          "64"
-        ],
-        "answer": 2,
-        "explain": "Nhân đôi mỗi bước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "FIFO là đặc trưng của?",
-        "options": [
-          "Stack",
-          "Queue",
-          "Tree",
-          "Graph"
-        ],
-        "answer": 1,
-        "explain": "Queue vào trước ra trước.",
-        "category": "LOGIC"
-      }
-    ]
-  },
-  {
-    "day": 13,
-    "title": "Đề tổng hợp 1",
-    "duration": 50,
-    "questions": [
-      {
-        "question": "INNER JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái",
-          "Chỉ bản ghi khớp giữa hai bảng",
-          "Toàn bộ bảng phải",
-          "Tích Descartes"
-        ],
-        "answer": 1,
-        "explain": "INNER JOIN chỉ lấy bản ghi thỏa điều kiện join.",
-        "category": "SQL"
-      },
-      {
-        "question": "Abstraction là gì?",
-        "options": [
-          "Trừu tượng hóa",
-          "Tạo bảng",
-          "Cấp phát IP",
-          "Xóa dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Trừu tượng hóa chỉ ra cái cần dùng, ẩn chi tiết.",
-        "category": "OOP"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "SSH port mặc định?",
-        "options": [
-          "21",
-          "22",
-          "25",
-          "53"
-        ],
-        "answer": 1,
-        "explain": "SSH dùng 22.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "free -m dùng để xem gì?",
-        "options": [
-          "RAM",
-          "Disk",
-          "Network",
-          "User"
-        ],
-        "answer": 0,
-        "explain": "free hiển thị bộ nhớ.",
-        "category": "LINUX"
-      },
-      {
-        "question": "PUT khác PATCH thế nào?",
-        "options": [
-          "PUT cập nhật toàn bộ, PATCH cập nhật một phần",
-          "Không khác",
-          "PATCH xóa dữ liệu",
-          "PUT chỉ lấy dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "PUT thường replace, PATCH partial update.",
-        "category": "API"
-      },
-      {
-        "question": "Log dùng để làm gì trong ATTT?",
-        "options": [
-          "Theo dõi, điều tra sự kiện",
-          "Tăng RAM",
-          "Tạo UI",
-          "Backup ảnh"
-        ],
-        "answer": 0,
-        "explain": "Log phục vụ giám sát và điều tra.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Dãy 1,2,4,8,16,?",
-        "options": [
-          "20",
-          "24",
-          "32",
-          "64"
-        ],
-        "answer": 2,
-        "explain": "Nhân đôi mỗi bước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "VNPT SmartCA là sản phẩm gì?",
-        "options": [
-          "Chữ ký số từ xa",
-          "Hệ điều hành",
-          "Router",
-          "Database"
-        ],
-        "answer": 0,
-        "explain": "SmartCA là dịch vụ chữ ký số từ xa.",
-        "category": "VNPT"
-      },
-      {
-        "question": "WHERE khác HAVING ở điểm nào?",
-        "options": [
-          "WHERE lọc sau GROUP BY",
-          "HAVING lọc trước GROUP BY",
-          "WHERE lọc trước GROUP BY, HAVING lọc sau GROUP BY",
-          "Không khác nhau"
-        ],
-        "answer": 2,
-        "explain": "WHERE lọc dòng trước nhóm, HAVING lọc nhóm.",
-        "category": "SQL"
-      },
-      {
-        "question": "Polymorphism là gì?",
-        "options": [
-          "Đa hình",
-          "Đóng gói",
-          "Khóa chính",
-          "Mã hóa"
-        ],
-        "answer": 0,
-        "explain": "Đa hình cho phép cùng interface có nhiều cách thực thi.",
-        "category": "OOP"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HTTP port mặc định?",
-        "options": [
-          "80",
-          "443",
-          "22",
-          "53"
-        ],
-        "answer": 0,
-        "explain": "HTTP dùng 80.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "df -h dùng để xem gì?",
-        "options": [
-          "Dung lượng filesystem",
-          "RAM",
-          "CPU",
-          "Process"
-        ],
-        "answer": 0,
-        "explain": "df -h hiển thị disk theo filesystem.",
-        "category": "LINUX"
-      },
-      {
-        "question": "JSON là gì?",
-        "options": [
-          "Định dạng trao đổi dữ liệu",
-          "Hệ điều hành",
-          "Database",
-          "Router"
-        ],
-        "answer": 0,
-        "explain": "JSON là text format phổ biến.",
-        "category": "API"
-      },
-      {
-        "question": "Least privilege là gì?",
-        "options": [
-          "Cấp quyền tối thiểu cần thiết",
-          "Cấp toàn quyền",
-          "Không cần mật khẩu",
-          "Xóa user"
-        ],
-        "answer": 0,
-        "explain": "Nguyên tắc quyền tối thiểu.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Độ phức tạp duyệt mảng n phần tử?",
-        "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
-        ],
-        "answer": 2,
-        "explain": "Duyệt từng phần tử là O(n).",
-        "category": "LOGIC"
-      },
-      {
-        "question": "VNPT là gì?",
-        "options": [
-          "Tập đoàn Bưu chính Viễn thông Việt Nam",
-          "Một ngôn ngữ lập trình",
-          "Một database",
-          "Một firewall"
-        ],
-        "answer": 0,
-        "explain": "VNPT là tập đoàn viễn thông - CNTT lớn của Việt Nam.",
-        "category": "VNPT"
-      },
-      {
-        "question": "Foreign Key dùng để làm gì?",
-        "options": [
-          "Mã hóa dữ liệu",
-          "Liên kết dữ liệu giữa bảng",
-          "Xóa dữ liệu",
-          "Tạo giao diện"
-        ],
-        "answer": 1,
-        "explain": "Foreign Key liên kết bảng con với bảng cha.",
-        "category": "SQL"
-      },
-      {
-        "question": "Inheritance là gì?",
-        "options": [
-          "Kế thừa",
-          "Đa hình",
-          "Chuẩn hóa",
-          "Index"
-        ],
-        "answer": 0,
-        "explain": "Inheritance cho phép lớp con kế thừa lớp cha.",
-        "category": "OOP"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NAT dùng để làm gì?",
-        "options": [
-          "Chuyển đổi địa chỉ IP",
-          "Tạo DNS",
-          "Tạo VLAN",
-          "Quản lý user"
-        ],
-        "answer": 0,
-        "explain": "NAT thường chuyển private IP ra public IP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "Lệnh tìm file?",
-        "options": [
-          "find",
-          "free",
-          "df",
-          "top"
-        ],
-        "answer": 0,
-        "explain": "find tìm file/thư mục.",
-        "category": "LINUX"
-      },
-      {
-        "question": "REST API thường dùng giao thức nào?",
-        "options": [
-          "HTTP",
-          "FTP",
-          "SMTP",
-          "SNMP"
-        ],
-        "answer": 0,
-        "explain": "REST phổ biến trên HTTP.",
-        "category": "API"
-      },
-      {
-        "question": "2FA là gì?",
-        "options": [
-          "Xác thực hai yếu tố",
-          "Hai firewall",
-          "Hai database",
-          "Hai IP"
-        ],
-        "answer": 0,
-        "explain": "2FA tăng an toàn đăng nhập.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Queue dùng thao tác nào phổ biến?",
-        "options": [
-          "enqueue/dequeue",
-          "commit/rollback",
-          "chmod/chown",
-          "dns/dhcp"
-        ],
-        "answer": 0,
-        "explain": "Queue dùng enqueue/dequeue.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Kỹ sư phần mềm cần kỹ năng nào?",
-        "options": [
-          "Lập trình, CSDL, phân tích lỗi",
-          "Chỉ bán hàng",
-          "Chỉ thiết kế ảnh",
-          "Chỉ nhập liệu"
-        ],
-        "answer": 0,
-        "explain": "Kỹ sư phần mềm cần kiến thức kỹ thuật nền tảng.",
-        "category": "VNPT"
-      },
-      {
-        "question": "Primary Key có đặc điểm nào?",
-        "options": [
-          "Cho phép NULL",
-          "Được trùng lặp",
-          "Không NULL và không trùng",
-          "Không tạo index"
-        ],
-        "answer": 2,
-        "explain": "Primary Key dùng định danh duy nhất bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Encapsulation là gì?",
-        "options": [
-          "Đóng gói dữ liệu và hành vi",
-          "Kế thừa lớp",
-          "Ghi đè hàm",
-          "Tạo database"
-        ],
-        "answer": 0,
-        "explain": "Đóng gói giúp che giấu chi tiết bên trong đối tượng.",
-        "category": "OOP"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "TCP khác UDP thế nào?",
-        "options": [
-          "TCP có kết nối và tin cậy hơn",
-          "UDP luôn tin cậy hơn",
-          "TCP không kiểm tra lỗi",
-          "Không khác"
-        ],
-        "answer": 0,
-        "explain": "TCP connection-oriented, UDP connectionless.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "grep dùng để làm gì?",
-        "options": [
-          "Tìm chuỗi trong file/output",
-          "Xóa file",
-          "Đổi quyền",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "grep lọc theo pattern.",
-        "category": "LINUX"
-      },
-      {
-        "question": "HTTP 403 là gì?",
-        "options": [
-          "Không có quyền",
-          "Chưa login",
-          "Thành công",
-          "Sai method"
-        ],
-        "answer": 0,
-        "explain": "403 Forbidden.",
-        "category": "API"
-      },
-      {
-        "question": "HTTPS bảo vệ bằng gì?",
-        "options": [
-          "TLS/SSL",
-          "DNS",
-          "DHCP",
-          "NAT"
-        ],
-        "answer": 0,
-        "explain": "HTTPS dùng TLS để mã hóa.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Stack dùng thao tác nào phổ biến?",
-        "options": [
-          "push/pop",
-          "select/join",
-          "get/post",
-          "ping/traceroute"
-        ],
-        "answer": 0,
-        "explain": "Stack dùng push và pop.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Khi khách hàng báo lỗi, bước đầu nên làm gì?",
-        "options": [
-          "Ghi nhận thông tin và xác minh lỗi",
-          "Đổ lỗi ngay",
-          "Tắt máy",
-          "Xóa dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Cần tiếp nhận, xác minh, phân loại.",
-        "category": "VNPT"
-      },
-      {
-        "question": "COUNT(*) dùng để làm gì?",
-        "options": [
-          "Đếm dòng",
-          "Tính tổng",
-          "Tính trung bình",
-          "Tìm lớn nhất"
-        ],
-        "answer": 0,
-        "explain": "COUNT(*) đếm số bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Đâu không phải tính chất OOP?",
-        "options": [
-          "Encapsulation",
-          "Inheritance",
-          "Normalization",
-          "Polymorphism"
-        ],
-        "answer": 2,
-        "explain": "Normalization thuộc CSDL.",
-        "category": "OOP"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "DHCP dùng để làm gì?",
-        "options": [
-          "Cấp phát IP tự động",
-          "Phân giải tên miền",
-          "Tạo web",
-          "Quản lý DB"
-        ],
-        "answer": 0,
-        "explain": "DHCP cấp IP/gateway/DNS tự động.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "Lệnh xem cuối file log realtime?",
-        "options": [
-          "tail -f",
-          "cat -n",
-          "grep -v",
-          "chmod"
-        ],
-        "answer": 0,
-        "explain": "tail -f theo dõi cuối file.",
-        "category": "LINUX"
-      },
-      {
-        "question": "HTTP 401 là gì?",
-        "options": [
-          "Chưa xác thực",
-          "Không tìm thấy",
-          "Lỗi server",
-          "Thành công"
-        ],
-        "answer": 0,
-        "explain": "401 Unauthorized.",
-        "category": "API"
-      },
-      {
-        "question": "Mật khẩu mạnh nên có gì?",
-        "options": [
-          "Chữ hoa, chữ thường, số, ký tự đặc biệt",
-          "Chỉ ngày sinh",
-          "Chỉ số điện thoại",
-          "Tên người dùng"
-        ],
-        "answer": 0,
-        "explain": "Password mạnh cần đủ độ phức tạp.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Nếu A>B và B>C thì?",
-        "options": [
-          "A>C",
-          "C>A",
-          "A=C",
-          "Không xác định"
-        ],
-        "answer": 0,
-        "explain": "Tính bắc cầu.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Cloud là gì?",
-        "options": [
-          "Dịch vụ tài nguyên CNTT qua mạng",
-          "Ổ cứng cá nhân",
-          "Máy in",
-          "Cáp mạng"
-        ],
-        "answer": 0,
-        "explain": "Cloud cung cấp tài nguyên theo nhu cầu.",
-        "category": "VNPT"
-      },
-      {
-        "question": "ORDER BY dùng để làm gì?",
-        "options": [
-          "Lọc dữ liệu",
-          "Sắp xếp dữ liệu",
-          "Nhóm dữ liệu",
-          "Tạo khóa"
-        ],
-        "answer": 1,
-        "explain": "ORDER BY sắp xếp tăng/giảm.",
-        "category": "SQL"
-      },
-      {
-        "question": "Constructor dùng để làm gì?",
-        "options": [
-          "Khởi tạo đối tượng",
-          "Xóa đối tượng",
-          "Sắp xếp dữ liệu",
-          "Backup"
-        ],
-        "answer": 0,
-        "explain": "Constructor chạy khi tạo object.",
-        "category": "OOP"
-      },
-      {
-        "question": "Từ khóa kế thừa trong Java là gì?",
-        "options": [
-          "implements",
-          "extends",
-          "import",
-          "package"
-        ],
-        "answer": 1,
-        "explain": "extends dùng để kế thừa class.",
-        "category": "JAVA"
-      },
-      {
-        "question": "DNS dùng để làm gì?",
-        "options": [
-          "Phân giải tên miền thành IP",
-          "Cấp IP tự động",
-          "Mã hóa dữ liệu",
-          "Backup"
-        ],
-        "answer": 0,
-        "explain": "DNS chuyển domain sang IP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "Lệnh xem tiến trình?",
-        "options": [
-          "ps -ef",
-          "mkdir",
-          "rm",
-          "pwd"
-        ],
-        "answer": 0,
-        "explain": "ps -ef liệt kê process.",
-        "category": "LINUX"
-      }
-    ]
-  },
-  {
-    "day": 14,
-    "title": "Đề tổng hợp 2",
-    "duration": 50,
-    "questions": [
-      {
-        "question": "LEFT JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái và phần khớp bảng phải",
-          "Chỉ bản ghi khớp",
-          "Toàn bộ bảng phải",
-          "Không có NULL"
-        ],
-        "answer": 0,
-        "explain": "LEFT JOIN giữ toàn bộ dữ liệu bảng bên trái.",
-        "category": "SQL"
-      },
-      {
-        "question": "Overloading là gì?",
-        "options": [
-          "Cùng tên khác tham số",
-          "Ghi đè lớp cha",
-          "Xóa phương thức",
-          "Tạo interface"
-        ],
-        "answer": 0,
-        "explain": "Overloading xảy ra trong cùng lớp hoặc phạm vi kế thừa.",
-        "category": "OOP"
-      },
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      },
-      {
-        "question": "DNS port mặc định?",
-        "options": [
-          "53",
-          "80",
-          "443",
-          "110"
-        ],
-        "answer": 0,
-        "explain": "DNS dùng 53 TCP/UDP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "chown dùng để làm gì?",
-        "options": [
-          "Đổi owner file",
-          "Đổi quyền số",
-          "Xem log",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "chown đổi chủ sở hữu.",
-        "category": "LINUX"
-      },
-      {
-        "question": "JWT dùng để làm gì?",
-        "options": [
-          "Xác thực/trao đổi thông tin dạng token",
-          "Tạo database",
-          "Cấp IP",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "JWT là token thường dùng auth.",
-        "category": "API"
-      },
-      {
-        "question": "SQL Injection là gì?",
-        "options": [
-          "Chèn lệnh SQL độc hại",
-          "Mã hóa DB",
-          "Backup DB",
-          "Tạo index"
-        ],
-        "answer": 0,
-        "explain": "SQLi khai thác input để chạy SQL trái phép.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "FIFO là đặc trưng của?",
-        "options": [
-          "Stack",
-          "Queue",
-          "Tree",
-          "Graph"
-        ],
-        "answer": 1,
-        "explain": "Queue vào trước ra trước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "VNPT HIS liên quan lĩnh vực nào?",
-        "options": [
-          "Y tế",
-          "Giáo dục",
-          "Nông nghiệp",
-          "Game"
-        ],
-        "answer": 0,
-        "explain": "HIS là hệ thống quản lý bệnh viện.",
-        "category": "VNPT"
-      },
-      {
-        "question": "INNER JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái",
-          "Chỉ bản ghi khớp giữa hai bảng",
-          "Toàn bộ bảng phải",
-          "Tích Descartes"
-        ],
-        "answer": 1,
-        "explain": "INNER JOIN chỉ lấy bản ghi thỏa điều kiện join.",
-        "category": "SQL"
-      },
-      {
-        "question": "Abstraction là gì?",
-        "options": [
-          "Trừu tượng hóa",
-          "Tạo bảng",
-          "Cấp phát IP",
-          "Xóa dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Trừu tượng hóa chỉ ra cái cần dùng, ẩn chi tiết.",
-        "category": "OOP"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "SSH port mặc định?",
-        "options": [
-          "21",
-          "22",
-          "25",
-          "53"
-        ],
-        "answer": 1,
-        "explain": "SSH dùng 22.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "free -m dùng để xem gì?",
-        "options": [
-          "RAM",
-          "Disk",
-          "Network",
-          "User"
-        ],
-        "answer": 0,
-        "explain": "free hiển thị bộ nhớ.",
-        "category": "LINUX"
-      },
-      {
-        "question": "PUT khác PATCH thế nào?",
-        "options": [
-          "PUT cập nhật toàn bộ, PATCH cập nhật một phần",
-          "Không khác",
-          "PATCH xóa dữ liệu",
-          "PUT chỉ lấy dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "PUT thường replace, PATCH partial update.",
-        "category": "API"
-      },
-      {
-        "question": "Log dùng để làm gì trong ATTT?",
-        "options": [
-          "Theo dõi, điều tra sự kiện",
-          "Tăng RAM",
-          "Tạo UI",
-          "Backup ảnh"
-        ],
-        "answer": 0,
-        "explain": "Log phục vụ giám sát và điều tra.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Dãy 1,2,4,8,16,?",
-        "options": [
-          "20",
-          "24",
-          "32",
-          "64"
-        ],
-        "answer": 2,
-        "explain": "Nhân đôi mỗi bước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "VNPT SmartCA là sản phẩm gì?",
-        "options": [
-          "Chữ ký số từ xa",
-          "Hệ điều hành",
-          "Router",
-          "Database"
-        ],
-        "answer": 0,
-        "explain": "SmartCA là dịch vụ chữ ký số từ xa.",
-        "category": "VNPT"
-      },
-      {
-        "question": "WHERE khác HAVING ở điểm nào?",
-        "options": [
-          "WHERE lọc sau GROUP BY",
-          "HAVING lọc trước GROUP BY",
-          "WHERE lọc trước GROUP BY, HAVING lọc sau GROUP BY",
-          "Không khác nhau"
-        ],
-        "answer": 2,
-        "explain": "WHERE lọc dòng trước nhóm, HAVING lọc nhóm.",
-        "category": "SQL"
-      },
-      {
-        "question": "Polymorphism là gì?",
-        "options": [
-          "Đa hình",
-          "Đóng gói",
-          "Khóa chính",
-          "Mã hóa"
-        ],
-        "answer": 0,
-        "explain": "Đa hình cho phép cùng interface có nhiều cách thực thi.",
-        "category": "OOP"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HTTP port mặc định?",
-        "options": [
-          "80",
-          "443",
-          "22",
-          "53"
-        ],
-        "answer": 0,
-        "explain": "HTTP dùng 80.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "df -h dùng để xem gì?",
-        "options": [
-          "Dung lượng filesystem",
-          "RAM",
-          "CPU",
-          "Process"
-        ],
-        "answer": 0,
-        "explain": "df -h hiển thị disk theo filesystem.",
-        "category": "LINUX"
-      },
-      {
-        "question": "JSON là gì?",
-        "options": [
-          "Định dạng trao đổi dữ liệu",
-          "Hệ điều hành",
-          "Database",
-          "Router"
-        ],
-        "answer": 0,
-        "explain": "JSON là text format phổ biến.",
-        "category": "API"
-      },
-      {
-        "question": "Least privilege là gì?",
-        "options": [
-          "Cấp quyền tối thiểu cần thiết",
-          "Cấp toàn quyền",
-          "Không cần mật khẩu",
-          "Xóa user"
-        ],
-        "answer": 0,
-        "explain": "Nguyên tắc quyền tối thiểu.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Độ phức tạp duyệt mảng n phần tử?",
-        "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
-        ],
-        "answer": 2,
-        "explain": "Duyệt từng phần tử là O(n).",
-        "category": "LOGIC"
-      },
-      {
-        "question": "VNPT là gì?",
-        "options": [
-          "Tập đoàn Bưu chính Viễn thông Việt Nam",
-          "Một ngôn ngữ lập trình",
-          "Một database",
-          "Một firewall"
-        ],
-        "answer": 0,
-        "explain": "VNPT là tập đoàn viễn thông - CNTT lớn của Việt Nam.",
-        "category": "VNPT"
-      },
-      {
-        "question": "Foreign Key dùng để làm gì?",
-        "options": [
-          "Mã hóa dữ liệu",
-          "Liên kết dữ liệu giữa bảng",
-          "Xóa dữ liệu",
-          "Tạo giao diện"
-        ],
-        "answer": 1,
-        "explain": "Foreign Key liên kết bảng con với bảng cha.",
-        "category": "SQL"
-      },
-      {
-        "question": "Inheritance là gì?",
-        "options": [
-          "Kế thừa",
-          "Đa hình",
-          "Chuẩn hóa",
-          "Index"
-        ],
-        "answer": 0,
-        "explain": "Inheritance cho phép lớp con kế thừa lớp cha.",
-        "category": "OOP"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NAT dùng để làm gì?",
-        "options": [
-          "Chuyển đổi địa chỉ IP",
-          "Tạo DNS",
-          "Tạo VLAN",
-          "Quản lý user"
-        ],
-        "answer": 0,
-        "explain": "NAT thường chuyển private IP ra public IP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "Lệnh tìm file?",
-        "options": [
-          "find",
-          "free",
-          "df",
-          "top"
-        ],
-        "answer": 0,
-        "explain": "find tìm file/thư mục.",
-        "category": "LINUX"
-      },
-      {
-        "question": "REST API thường dùng giao thức nào?",
-        "options": [
-          "HTTP",
-          "FTP",
-          "SMTP",
-          "SNMP"
-        ],
-        "answer": 0,
-        "explain": "REST phổ biến trên HTTP.",
-        "category": "API"
-      },
-      {
-        "question": "2FA là gì?",
-        "options": [
-          "Xác thực hai yếu tố",
-          "Hai firewall",
-          "Hai database",
-          "Hai IP"
-        ],
-        "answer": 0,
-        "explain": "2FA tăng an toàn đăng nhập.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Queue dùng thao tác nào phổ biến?",
-        "options": [
-          "enqueue/dequeue",
-          "commit/rollback",
-          "chmod/chown",
-          "dns/dhcp"
-        ],
-        "answer": 0,
-        "explain": "Queue dùng enqueue/dequeue.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Kỹ sư phần mềm cần kỹ năng nào?",
-        "options": [
-          "Lập trình, CSDL, phân tích lỗi",
-          "Chỉ bán hàng",
-          "Chỉ thiết kế ảnh",
-          "Chỉ nhập liệu"
-        ],
-        "answer": 0,
-        "explain": "Kỹ sư phần mềm cần kiến thức kỹ thuật nền tảng.",
-        "category": "VNPT"
-      },
-      {
-        "question": "Primary Key có đặc điểm nào?",
-        "options": [
-          "Cho phép NULL",
-          "Được trùng lặp",
-          "Không NULL và không trùng",
-          "Không tạo index"
-        ],
-        "answer": 2,
-        "explain": "Primary Key dùng định danh duy nhất bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Encapsulation là gì?",
-        "options": [
-          "Đóng gói dữ liệu và hành vi",
-          "Kế thừa lớp",
-          "Ghi đè hàm",
-          "Tạo database"
-        ],
-        "answer": 0,
-        "explain": "Đóng gói giúp che giấu chi tiết bên trong đối tượng.",
-        "category": "OOP"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "TCP khác UDP thế nào?",
-        "options": [
-          "TCP có kết nối và tin cậy hơn",
-          "UDP luôn tin cậy hơn",
-          "TCP không kiểm tra lỗi",
-          "Không khác"
-        ],
-        "answer": 0,
-        "explain": "TCP connection-oriented, UDP connectionless.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "grep dùng để làm gì?",
-        "options": [
-          "Tìm chuỗi trong file/output",
-          "Xóa file",
-          "Đổi quyền",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "grep lọc theo pattern.",
-        "category": "LINUX"
-      },
-      {
-        "question": "HTTP 403 là gì?",
-        "options": [
-          "Không có quyền",
-          "Chưa login",
-          "Thành công",
-          "Sai method"
-        ],
-        "answer": 0,
-        "explain": "403 Forbidden.",
-        "category": "API"
-      },
-      {
-        "question": "HTTPS bảo vệ bằng gì?",
-        "options": [
-          "TLS/SSL",
-          "DNS",
-          "DHCP",
-          "NAT"
-        ],
-        "answer": 0,
-        "explain": "HTTPS dùng TLS để mã hóa.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Stack dùng thao tác nào phổ biến?",
-        "options": [
-          "push/pop",
-          "select/join",
-          "get/post",
-          "ping/traceroute"
-        ],
-        "answer": 0,
-        "explain": "Stack dùng push và pop.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Khi khách hàng báo lỗi, bước đầu nên làm gì?",
-        "options": [
-          "Ghi nhận thông tin và xác minh lỗi",
-          "Đổ lỗi ngay",
-          "Tắt máy",
-          "Xóa dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Cần tiếp nhận, xác minh, phân loại.",
-        "category": "VNPT"
-      },
-      {
-        "question": "COUNT(*) dùng để làm gì?",
-        "options": [
-          "Đếm dòng",
-          "Tính tổng",
-          "Tính trung bình",
-          "Tìm lớn nhất"
-        ],
-        "answer": 0,
-        "explain": "COUNT(*) đếm số bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Đâu không phải tính chất OOP?",
-        "options": [
-          "Encapsulation",
-          "Inheritance",
-          "Normalization",
-          "Polymorphism"
-        ],
-        "answer": 2,
-        "explain": "Normalization thuộc CSDL.",
-        "category": "OOP"
-      },
-      {
-        "question": "HashMap có cho phép key trùng không?",
-        "options": [
-          "Có",
-          "Không",
-          "Chỉ String",
-          "Chỉ số"
-        ],
-        "answer": 1,
-        "explain": "Key trong HashMap là duy nhất.",
-        "category": "JAVA"
-      },
-      {
-        "question": "DHCP dùng để làm gì?",
-        "options": [
-          "Cấp phát IP tự động",
-          "Phân giải tên miền",
-          "Tạo web",
-          "Quản lý DB"
-        ],
-        "answer": 0,
-        "explain": "DHCP cấp IP/gateway/DNS tự động.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "Lệnh xem cuối file log realtime?",
-        "options": [
-          "tail -f",
-          "cat -n",
-          "grep -v",
-          "chmod"
-        ],
-        "answer": 0,
-        "explain": "tail -f theo dõi cuối file.",
-        "category": "LINUX"
-      }
-    ]
-  },
-  {
-    "day": 15,
-    "title": "Đề mô phỏng online",
-    "duration": 50,
-    "questions": [
-      {
-        "question": "Index dùng để làm gì?",
-        "options": [
-          "Tăng tốc truy vấn",
-          "Backup dữ liệu",
-          "Mã hóa dữ liệu",
-          "Xóa bảng"
-        ],
-        "answer": 0,
-        "explain": "Index giúp tăng tốc tìm kiếm nhưng có thể làm chậm ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Overriding là gì?",
-        "options": [
-          "Ghi đè phương thức lớp cha",
-          "Cùng tên khác tham số",
-          "Tạo constructor",
-          "Tạo package"
-        ],
-        "answer": 0,
-        "explain": "Overriding là lớp con định nghĩa lại method của lớp cha.",
-        "category": "OOP"
-      },
-      {
-        "question": "Map lưu dữ liệu dạng nào?",
-        "options": [
-          "Key-Value",
-          "Stack",
-          "Queue",
-          "Tree only"
-        ],
-        "answer": 0,
-        "explain": "Map lưu cặp khóa-giá trị.",
-        "category": "JAVA"
-      },
-      {
-        "question": "VLAN dùng để làm gì?",
-        "options": [
-          "Phân tách mạng logic",
-          "Mã hóa file",
-          "Tạo database",
-          "Sao lưu"
-        ],
-        "answer": 0,
-        "explain": "VLAN chia miền broadcast logic.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "systemctl dùng để làm gì?",
-        "options": [
-          "Quản lý service",
-          "Tạo file",
-          "Sửa file",
-          "Tìm chuỗi"
-        ],
-        "answer": 0,
-        "explain": "systemctl quản lý dịch vụ systemd.",
-        "category": "LINUX"
-      },
-      {
-        "question": "GET dùng để làm gì?",
-        "options": [
-          "Lấy dữ liệu",
-          "Tạo dữ liệu",
-          "Xóa dữ liệu",
-          "Mã hóa"
-        ],
-        "answer": 0,
-        "explain": "GET thường dùng đọc dữ liệu.",
-        "category": "API"
-      },
-      {
-        "question": "XSS là gì?",
-        "options": [
-          "Chèn mã script độc hại vào web",
-          "Tấn công mạng vật lý",
-          "Mã hóa file",
-          "Cấp IP"
-        ],
-        "answer": 0,
-        "explain": "XSS thường chèn JavaScript.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "LIFO là đặc trưng của?",
-        "options": [
-          "Queue",
-          "Stack",
-          "Graph",
-          "Map"
-        ],
-        "answer": 1,
-        "explain": "Stack vào sau ra trước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "VNPT iGate thường dùng cho gì?",
-        "options": [
-          "Dịch vụ công/một cửa điện tử",
-          "Xem phim",
-          "Game",
-          "Lưu ảnh"
-        ],
-        "answer": 0,
-        "explain": "iGate phục vụ chính quyền điện tử/dịch vụ công.",
-        "category": "VNPT"
-      },
-      {
-        "question": "LEFT JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái và phần khớp bảng phải",
-          "Chỉ bản ghi khớp",
-          "Toàn bộ bảng phải",
-          "Không có NULL"
-        ],
-        "answer": 0,
-        "explain": "LEFT JOIN giữ toàn bộ dữ liệu bảng bên trái.",
-        "category": "SQL"
-      },
-      {
-        "question": "Overloading là gì?",
-        "options": [
-          "Cùng tên khác tham số",
-          "Ghi đè lớp cha",
-          "Xóa phương thức",
-          "Tạo interface"
-        ],
-        "answer": 0,
-        "explain": "Overloading xảy ra trong cùng lớp hoặc phạm vi kế thừa.",
-        "category": "OOP"
-      },
-      {
-        "question": "Set có đặc điểm gì?",
-        "options": [
-          "Không chứa phần tử trùng",
-          "Luôn sắp xếp",
-          "Chỉ chứa số",
-          "Cho key-value"
-        ],
-        "answer": 0,
-        "explain": "Set loại bỏ phần tử trùng.",
-        "category": "JAVA"
-      },
-      {
-        "question": "DNS port mặc định?",
-        "options": [
-          "53",
-          "80",
-          "443",
-          "110"
-        ],
-        "answer": 0,
-        "explain": "DNS dùng 53 TCP/UDP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "chown dùng để làm gì?",
-        "options": [
-          "Đổi owner file",
-          "Đổi quyền số",
-          "Xem log",
-          "Tạo user"
-        ],
-        "answer": 0,
-        "explain": "chown đổi chủ sở hữu.",
-        "category": "LINUX"
-      },
-      {
-        "question": "JWT dùng để làm gì?",
-        "options": [
-          "Xác thực/trao đổi thông tin dạng token",
-          "Tạo database",
-          "Cấp IP",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "JWT là token thường dùng auth.",
-        "category": "API"
-      },
-      {
-        "question": "SQL Injection là gì?",
-        "options": [
-          "Chèn lệnh SQL độc hại",
-          "Mã hóa DB",
-          "Backup DB",
-          "Tạo index"
-        ],
-        "answer": 0,
-        "explain": "SQLi khai thác input để chạy SQL trái phép.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "FIFO là đặc trưng của?",
-        "options": [
-          "Stack",
-          "Queue",
-          "Tree",
-          "Graph"
-        ],
-        "answer": 1,
-        "explain": "Queue vào trước ra trước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "VNPT HIS liên quan lĩnh vực nào?",
-        "options": [
-          "Y tế",
-          "Giáo dục",
-          "Nông nghiệp",
-          "Game"
-        ],
-        "answer": 0,
-        "explain": "HIS là hệ thống quản lý bệnh viện.",
-        "category": "VNPT"
-      },
-      {
-        "question": "INNER JOIN trả về gì?",
-        "options": [
-          "Toàn bộ bảng trái",
-          "Chỉ bản ghi khớp giữa hai bảng",
-          "Toàn bộ bảng phải",
-          "Tích Descartes"
-        ],
-        "answer": 1,
-        "explain": "INNER JOIN chỉ lấy bản ghi thỏa điều kiện join.",
-        "category": "SQL"
-      },
-      {
-        "question": "Abstraction là gì?",
-        "options": [
-          "Trừu tượng hóa",
-          "Tạo bảng",
-          "Cấp phát IP",
-          "Xóa dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "Trừu tượng hóa chỉ ra cái cần dùng, ẩn chi tiết.",
-        "category": "OOP"
-      },
-      {
-        "question": "String trong Java có tính chất gì?",
-        "options": [
-          "Immutable",
-          "Mutable",
-          "Không phải object",
-          "Chỉ lưu số"
-        ],
-        "answer": 0,
-        "explain": "String là immutable.",
-        "category": "JAVA"
-      },
-      {
-        "question": "SSH port mặc định?",
-        "options": [
-          "21",
-          "22",
-          "25",
-          "53"
-        ],
-        "answer": 1,
-        "explain": "SSH dùng 22.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "free -m dùng để xem gì?",
-        "options": [
-          "RAM",
-          "Disk",
-          "Network",
-          "User"
-        ],
-        "answer": 0,
-        "explain": "free hiển thị bộ nhớ.",
-        "category": "LINUX"
-      },
-      {
-        "question": "PUT khác PATCH thế nào?",
-        "options": [
-          "PUT cập nhật toàn bộ, PATCH cập nhật một phần",
-          "Không khác",
-          "PATCH xóa dữ liệu",
-          "PUT chỉ lấy dữ liệu"
-        ],
-        "answer": 0,
-        "explain": "PUT thường replace, PATCH partial update.",
-        "category": "API"
-      },
-      {
-        "question": "Log dùng để làm gì trong ATTT?",
-        "options": [
-          "Theo dõi, điều tra sự kiện",
-          "Tăng RAM",
-          "Tạo UI",
-          "Backup ảnh"
-        ],
-        "answer": 0,
-        "explain": "Log phục vụ giám sát và điều tra.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Dãy 1,2,4,8,16,?",
-        "options": [
-          "20",
-          "24",
-          "32",
-          "64"
-        ],
-        "answer": 2,
-        "explain": "Nhân đôi mỗi bước.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "VNPT SmartCA là sản phẩm gì?",
-        "options": [
-          "Chữ ký số từ xa",
-          "Hệ điều hành",
-          "Router",
-          "Database"
-        ],
-        "answer": 0,
-        "explain": "SmartCA là dịch vụ chữ ký số từ xa.",
-        "category": "VNPT"
-      },
-      {
-        "question": "WHERE khác HAVING ở điểm nào?",
-        "options": [
-          "WHERE lọc sau GROUP BY",
-          "HAVING lọc trước GROUP BY",
-          "WHERE lọc trước GROUP BY, HAVING lọc sau GROUP BY",
-          "Không khác nhau"
-        ],
-        "answer": 2,
-        "explain": "WHERE lọc dòng trước nhóm, HAVING lọc nhóm.",
-        "category": "SQL"
-      },
-      {
-        "question": "Polymorphism là gì?",
-        "options": [
-          "Đa hình",
-          "Đóng gói",
-          "Khóa chính",
-          "Mã hóa"
-        ],
-        "answer": 0,
-        "explain": "Đa hình cho phép cùng interface có nhiều cách thực thi.",
-        "category": "OOP"
-      },
-      {
-        "question": "finally trong try-catch dùng để làm gì?",
-        "options": [
-          "Chạy dù có exception hay không",
-          "Chỉ chạy khi lỗi",
-          "Không bao giờ chạy",
-          "Tạo class"
-        ],
-        "answer": 0,
-        "explain": "finally thường dùng đóng tài nguyên.",
-        "category": "JAVA"
-      },
-      {
-        "question": "HTTP port mặc định?",
-        "options": [
-          "80",
-          "443",
-          "22",
-          "53"
-        ],
-        "answer": 0,
-        "explain": "HTTP dùng 80.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "df -h dùng để xem gì?",
-        "options": [
-          "Dung lượng filesystem",
-          "RAM",
-          "CPU",
-          "Process"
-        ],
-        "answer": 0,
-        "explain": "df -h hiển thị disk theo filesystem.",
-        "category": "LINUX"
-      },
-      {
-        "question": "JSON là gì?",
-        "options": [
-          "Định dạng trao đổi dữ liệu",
-          "Hệ điều hành",
-          "Database",
-          "Router"
-        ],
-        "answer": 0,
-        "explain": "JSON là text format phổ biến.",
-        "category": "API"
-      },
-      {
-        "question": "Least privilege là gì?",
-        "options": [
-          "Cấp quyền tối thiểu cần thiết",
-          "Cấp toàn quyền",
-          "Không cần mật khẩu",
-          "Xóa user"
-        ],
-        "answer": 0,
-        "explain": "Nguyên tắc quyền tối thiểu.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Độ phức tạp duyệt mảng n phần tử?",
-        "options": [
-          "O(1)",
-          "O(log n)",
-          "O(n)",
-          "O(n²)"
-        ],
-        "answer": 2,
-        "explain": "Duyệt từng phần tử là O(n).",
-        "category": "LOGIC"
-      },
-      {
-        "question": "VNPT là gì?",
-        "options": [
-          "Tập đoàn Bưu chính Viễn thông Việt Nam",
-          "Một ngôn ngữ lập trình",
-          "Một database",
-          "Một firewall"
-        ],
-        "answer": 0,
-        "explain": "VNPT là tập đoàn viễn thông - CNTT lớn của Việt Nam.",
-        "category": "VNPT"
-      },
-      {
-        "question": "Foreign Key dùng để làm gì?",
-        "options": [
-          "Mã hóa dữ liệu",
-          "Liên kết dữ liệu giữa bảng",
-          "Xóa dữ liệu",
-          "Tạo giao diện"
-        ],
-        "answer": 1,
-        "explain": "Foreign Key liên kết bảng con với bảng cha.",
-        "category": "SQL"
-      },
-      {
-        "question": "Inheritance là gì?",
-        "options": [
-          "Kế thừa",
-          "Đa hình",
-          "Chuẩn hóa",
-          "Index"
-        ],
-        "answer": 0,
-        "explain": "Inheritance cho phép lớp con kế thừa lớp cha.",
-        "category": "OOP"
-      },
-      {
-        "question": "Checked Exception là gì?",
-        "options": [
-          "Bắt buộc xử lý/khai báo",
-          "Không cần xử lý",
-          "Lỗi phần cứng",
-          "Lỗi SQL"
-        ],
-        "answer": 0,
-        "explain": "Checked exception được compiler kiểm tra.",
-        "category": "JAVA"
-      },
-      {
-        "question": "NAT dùng để làm gì?",
-        "options": [
-          "Chuyển đổi địa chỉ IP",
-          "Tạo DNS",
-          "Tạo VLAN",
-          "Quản lý user"
-        ],
-        "answer": 0,
-        "explain": "NAT thường chuyển private IP ra public IP.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "Lệnh tìm file?",
-        "options": [
-          "find",
-          "free",
-          "df",
-          "top"
-        ],
-        "answer": 0,
-        "explain": "find tìm file/thư mục.",
-        "category": "LINUX"
-      },
-      {
-        "question": "REST API thường dùng giao thức nào?",
-        "options": [
-          "HTTP",
-          "FTP",
-          "SMTP",
-          "SNMP"
-        ],
-        "answer": 0,
-        "explain": "REST phổ biến trên HTTP.",
-        "category": "API"
-      },
-      {
-        "question": "2FA là gì?",
-        "options": [
-          "Xác thực hai yếu tố",
-          "Hai firewall",
-          "Hai database",
-          "Hai IP"
-        ],
-        "answer": 0,
-        "explain": "2FA tăng an toàn đăng nhập.",
-        "category": "SECURITY"
-      },
-      {
-        "question": "Queue dùng thao tác nào phổ biến?",
-        "options": [
-          "enqueue/dequeue",
-          "commit/rollback",
-          "chmod/chown",
-          "dns/dhcp"
-        ],
-        "answer": 0,
-        "explain": "Queue dùng enqueue/dequeue.",
-        "category": "LOGIC"
-      },
-      {
-        "question": "Kỹ sư phần mềm cần kỹ năng nào?",
-        "options": [
-          "Lập trình, CSDL, phân tích lỗi",
-          "Chỉ bán hàng",
-          "Chỉ thiết kế ảnh",
-          "Chỉ nhập liệu"
-        ],
-        "answer": 0,
-        "explain": "Kỹ sư phần mềm cần kiến thức kỹ thuật nền tảng.",
-        "category": "VNPT"
-      },
-      {
-        "question": "Primary Key có đặc điểm nào?",
-        "options": [
-          "Cho phép NULL",
-          "Được trùng lặp",
-          "Không NULL và không trùng",
-          "Không tạo index"
-        ],
-        "answer": 2,
-        "explain": "Primary Key dùng định danh duy nhất bản ghi.",
-        "category": "SQL"
-      },
-      {
-        "question": "Encapsulation là gì?",
-        "options": [
-          "Đóng gói dữ liệu và hành vi",
-          "Kế thừa lớp",
-          "Ghi đè hàm",
-          "Tạo database"
-        ],
-        "answer": 0,
-        "explain": "Đóng gói giúp che giấu chi tiết bên trong đối tượng.",
-        "category": "OOP"
-      },
-      {
-        "question": "ArrayList truy cập phần tử theo index có độ phức tạp thường là?",
-        "options": [
-          "O(1)",
-          "O(n)",
-          "O(log n)",
-          "O(n²)"
-        ],
-        "answer": 0,
-        "explain": "ArrayList dựa trên mảng động.",
-        "category": "JAVA"
-      },
-      {
-        "question": "TCP khác UDP thế nào?",
-        "options": [
-          "TCP có kết nối và tin cậy hơn",
-          "UDP luôn tin cậy hơn",
-          "TCP không kiểm tra lỗi",
-          "Không khác"
-        ],
-        "answer": 0,
-        "explain": "TCP connection-oriented, UDP connectionless.",
-        "category": "NETWORK"
-      },
-      {
-        "question": "grep dùng để làm gì?",
-        "options": [
-          "Tìm chuỗi trong file/output",
-          "Xóa file",
-          "Đổi quyền",
-          "Nén file"
-        ],
-        "answer": 0,
-        "explain": "grep lọc theo pattern.",
-        "category": "LINUX"
+        "explain": "SRP giúp class tập trung vào một trách nhiệm rõ ràng."
       }
     ]
   }
 ];
+
+// Tương thích với các bản web chỉ đọc window.QUESTIONS
+window.QUESTIONS = window.QUIZ_DAYS[0].questions;
